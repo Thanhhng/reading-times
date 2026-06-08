@@ -1,0 +1,6 @@
+<svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Sci-Fi">
+  
+  <circle cx="22" cy="22" r="11" fill="var(--accent-soft, #F4E2D6)" stroke="currentColor" stroke-width="2.2"></circle>
+  <ellipse cx="24" cy="24" rx="20" ry="7" transform="rotate(-24 24 24)" stroke="currentColor" stroke-width="2.2"></ellipse>
+  <circle cx="19" cy="19" r="2" fill="var(--accent, #C4663A)"></circle>
+</svg>

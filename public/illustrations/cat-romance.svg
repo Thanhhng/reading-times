@@ -1,0 +1,8 @@
+<svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Romance">
+  
+  <g stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M24 38c-6-4-13-4.5-19-3V14c6-1.5 13-1 19 3 6-4 13-4.5 19-3v21c-6-1.5-13-1-19 3Z"></path>
+    <path d="M24 17v21"></path>
+  </g>
+  <path d="M24 30c-3.6-3-6-4.6-6-7.6 0-1.9 1.5-3.4 3.4-3.4 1.1 0 2.1.6 2.6 1.4.5-.8 1.5-1.4 2.6-1.4 1.9 0 3.4 1.5 3.4 3.4 0 3-2.4 4.6-6 7.6Z" fill="var(--accent, #C4663A)" stroke="none"></path>
+</svg>

@@ -1,0 +1,19 @@
+<svg viewBox="0 0 240 200" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="A book with a speech bubble">
+  
+  
+  <g transform="translate(0,18)">
+    <path d="M120 150c-16-9-36-11-52-7v-78c16-4 36-2 52 7 16-9 36-11 52-7v78c-16-4-36-2-52 7Z" fill="var(--surface, #FFFFFF)" stroke="currentColor" stroke-width="2.6" stroke-linejoin="round"></path>
+    <path d="M120 79v71" stroke="currentColor" stroke-width="2.4"></path>
+    <g stroke="var(--accent, #C4663A)" stroke-width="1.8" stroke-linecap="round">
+      <path d="M78 92h30"></path><path d="M78 104h32"></path><path d="M78 116h26"></path>
+    </g>
+    <g stroke="var(--accent-2, #2F7E78)" stroke-width="1.8" stroke-linecap="round">
+      <path d="M132 92h30"></path><path d="M132 104h32"></path><path d="M132 116h26"></path>
+    </g>
+  </g>
+  
+  <path d="M132 22h60c8 0 14 6 14 14v22c0 8-6 14-14 14h-30l-14 14v-14h-16c-8 0-14-6-14-14V36c0-8 6-14 14-14Z" fill="var(--accent-soft, #F4E2D6)" stroke="currentColor" stroke-width="2.6" stroke-linejoin="round"></path>
+  <g fill="var(--accent, #C4663A)">
+    <circle cx="150" cy="47" r="3.4"></circle><circle cx="164" cy="47" r="3.4"></circle><circle cx="178" cy="47" r="3.4"></circle>
+  </g>
+</svg>

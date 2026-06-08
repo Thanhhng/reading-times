@@ -1,0 +1,18 @@
+<svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Reading Time">
+  
+  <g stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+    
+    <path d="M24 13.5C20.5 11 16 10.4 11 11.2 9.8 11.4 9 12.4 9 13.6V33.4c0 1.4 1.2 2.5 2.6 2.3 4.4-.6 8.6-.1 12.4 2" fill="var(--accent-soft, #F4E2D6)"></path>
+    
+    <path d="M24 13.5C27.5 11 32 10.4 37 11.2c1.2.2 2 1.2 2 2.4V33.4c0 1.4-1.2 2.5-2.6 2.3-4.4-.6-8.6-.1-12.4 2" fill="var(--surface, #FFFFFF)"></path>
+    
+    <path d="M24 13.5V37.7"></path>
+  </g>
+  
+  <circle cx="24" cy="7.5" r="2.6" fill="var(--accent, #C4663A)" stroke="none"></circle>
+  <g stroke="var(--accent, #C4663A)" stroke-width="1.8" stroke-linecap="round">
+    <path d="M24 2.2V3.4"></path>
+    <path d="M19.6 4.2l.7.9"></path>
+    <path d="M28.4 4.2l-.7.9"></path>
+  </g>
+</svg>

@@ -1,0 +1,25 @@
+<svg viewBox="0 0 240 200" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="A book floating up into a cloud">
+  
+  
+  <path d="M70 96c-15 0-26-11-26-25 0-13 10-24 23-25 4-15 18-26 34-26 18 0 33 13 35 31 13 1 24 12 24 26 0 15-12 27-27 27H70Z" transform="translate(0,-2)" fill="var(--accent-soft, #F4E2D6)" stroke="currentColor" stroke-width="2.6" stroke-linejoin="round"></path>
+  
+  <g stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M120 150v-34"></path>
+    <path d="M108 128l12-12 12 12"></path>
+  </g>
+  
+  <g transform="translate(0,6)">
+    <path d="M120 178c-12-7-26-8-38-5v-30c12-3 26-2 38 5 12-7 26-8 38-5v30c-12-3-26-2-38 5Z" fill="var(--surface, #FFFFFF)" stroke="currentColor" stroke-width="2.6" stroke-linejoin="round"></path>
+    <path d="M120 148v30" stroke="currentColor" stroke-width="2.4"></path>
+    <g stroke="var(--accent, #C4663A)" stroke-width="1.8" stroke-linecap="round">
+      <path d="M90 152h22"></path><path d="M90 160h24"></path>
+    </g>
+    <g stroke="var(--accent-2, #2F7E78)" stroke-width="1.8" stroke-linecap="round">
+      <path d="M128 152h22"></path><path d="M128 160h24"></path>
+    </g>
+  </g>
+  
+  <g fill="var(--accent, #C4663A)">
+    <circle cx="70" cy="120" r="2.4"></circle><circle cx="170" cy="120" r="2.4" opacity="0.5"></circle>
+  </g>
+</svg>

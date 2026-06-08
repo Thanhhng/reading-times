@@ -1,0 +1,10 @@
+<svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Classic">
+  
+  <g stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M24 6l16 8H8l16-8Z" fill="var(--accent-soft, #F4E2D6)"></path>
+    <path d="M8 18h32"></path>
+    <path d="M13 18v18M22 18v18M26 18v18M35 18v18"></path>
+    <path d="M8 40h32"></path>
+    <path d="M6 36h36"></path>
+  </g>
+</svg>
