@@ -1,0 +1,23 @@
+<svg viewBox="0 0 240 200" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="An empty bookshelf with a candle">
+  
+  
+  <path d="M40 150h160" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"></path>
+  <path d="M52 150v10M188 150v10" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"></path>
+  
+  <g stroke="currentColor" stroke-width="2.4" stroke-linejoin="round">
+    <rect x="58" y="108" width="14" height="42" rx="3" fill="var(--accent-soft, #F4E2D6)"></rect>
+    <rect x="74" y="98" width="14" height="52" rx="3" fill="var(--surface, #FFFFFF)"></rect>
+    
+    <path d="M96 150l8-44 13 3-7 41Z" fill="var(--accent-2-soft, #DCEAE8)"></path>
+  </g>
+  
+  <g stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-dasharray="2 7" opacity="0.4">
+    <path d="M132 150v-40"></path><path d="M146 150v-46"></path><path d="M160 150v-40"></path>
+  </g>
+  
+  <rect x="172" y="120" width="14" height="30" rx="2" fill="var(--surface, #FFFFFF)" stroke="currentColor" stroke-width="2.4"></rect>
+  <path d="M179 120v-8" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"></path>
+  <path d="M179 112c0-6 5-7 5-12-4 2-9 5-5 12Z" fill="var(--accent, #C4663A)" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"></path>
+  
+  <circle cx="179" cy="92" r="1.6" fill="var(--accent, #C4663A)" opacity="0.6"></circle>
+</svg>

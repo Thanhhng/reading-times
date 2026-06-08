@@ -1,0 +1,20 @@
+<svg viewBox="0 0 240 200" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="A glass jar holding letters">
+  
+  
+  <path d="M78 70h84v82c0 12-10 22-22 22H100c-12 0-22-10-22-22V70Z" fill="var(--accent-2-soft, #DCEAE8)" stroke="currentColor" stroke-width="2.6" stroke-linejoin="round" opacity="0.55"></path>
+  <path d="M78 70h84v82c0 12-10 22-22 22H100c-12 0-22-10-22-22V70Z" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linejoin="round"></path>
+  
+  <rect x="72" y="54" width="96" height="20" rx="6" fill="var(--accent-soft, #F4E2D6)" stroke="currentColor" stroke-width="2.6"></rect>
+  <path d="M92 54v-8c0-3 2-5 5-5h46c3 0 5 2 5 5v8" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"></path>
+  
+  <g font-family="var(--font-display, serif)" font-weight="700" font-size="22" fill="var(--accent, #C4663A)">
+    <text x="98" y="150" transform="rotate(-12 98 150)">a</text>
+    <text x="120" y="160">b</text>
+    <text x="138" y="148" transform="rotate(10 138 148)">c</text>
+  </g>
+  
+  <text x="116" y="44" font-family="var(--font-display, serif)" font-weight="700" font-size="18" fill="var(--accent-2, #2F7E78)" transform="rotate(8 116 44)">w</text>
+  <g stroke="currentColor" stroke-width="1.6" stroke-linecap="round" opacity="0.4">
+    <path d="M122 48v6"></path>
+  </g>
+</svg>

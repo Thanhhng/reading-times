@@ -1,0 +1,24 @@
+<svg viewBox="0 0 240 200" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="An hourglass whose sand becomes a book page">
+  
+  
+  <g stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M78 36h44M78 36c0 24 22 30 22 44 0 14-22 20-22 44M122 36c0 24-22 30-22 44 0 14 22 20 22 44M78 124h44"></path>
+  </g>
+  
+  <path d="M84 44h32c-2 14-14 18-16 24-2-6-14-10-16-24Z" fill="var(--accent-soft, #F4E2D6)"></path>
+  
+  <path d="M100 78v18" stroke="var(--accent, #C4663A)" stroke-width="2.2" stroke-linecap="round" stroke-dasharray="2 5"></path>
+  
+  <g transform="translate(0,4)">
+    <rect x="56" y="132" width="88" height="46" rx="6" fill="var(--surface, #FFFFFF)" stroke="currentColor" stroke-width="2.6"></rect>
+    <g stroke="var(--accent, #C4663A)" stroke-width="1.8" stroke-linecap="round">
+      <path d="M68 146h64"></path><path d="M68 156h60"></path><path d="M68 166h44"></path>
+    </g>
+    
+    <path d="M138 132c8-2 16 2 18 10" stroke="var(--accent-2, #2F7E78)" stroke-width="2" stroke-linecap="round" fill="none"></path>
+  </g>
+  
+  <g stroke="var(--accent-2, #2F7E78)" stroke-width="1.8" stroke-linecap="round">
+    <path d="M150 70v8M146 74h8"></path>
+  </g>
+</svg>
