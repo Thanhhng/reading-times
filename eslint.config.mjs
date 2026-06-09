@@ -12,6 +12,8 @@ const eslintConfig = defineConfig([
     "out/**",
     "build/**",
     "next-env.d.ts",
+    // Vendored design-system bundle — reference only, not app source.
+    "app/design/**",
   ]),
 ]);
 
