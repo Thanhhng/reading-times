@@ -31,15 +31,21 @@ export const avatar = {
 };
 
 export const bookCard = {
-  root: "group flex flex-col gap-[10px] text-left",
+  root: "group flex w-full flex-col gap-3 rounded-[var(--radius-lg)] border border-border bg-surface p-3 text-left shadow-[var(--shadow-sm)] transition-[transform,box-shadow,border-color] duration-[var(--dur-base)] ease-[var(--ease-out)] hover:-translate-y-1 hover:border-[var(--border-strong)] hover:shadow-[var(--shadow-hover)]",
   cover:
-    "relative flex aspect-[3/4] items-end overflow-hidden rounded-[var(--radius-md)] bg-accent p-3 shadow-[var(--shadow-sm)] transition-transform duration-[var(--dur-base)] group-hover:-translate-y-[3px]",
-  coverTitle: "font-serif font-semibold text-[13px] leading-[1.15] text-[#FBEEE3]",
-  body: "flex flex-col gap-[3px]",
-  title: "font-serif font-semibold text-[length:var(--text-base)] leading-[1.2] text-ink",
-  author: "text-[length:var(--text-xs)] text-muted-foreground",
+    "relative flex aspect-[3/4] flex-col justify-end overflow-hidden rounded-[var(--radius-md)] bg-[var(--_c1)] p-[14px] shadow-[inset_0_0_0_1px_rgba(0,0,0,0.06)] after:absolute after:inset-y-0 after:left-0 after:w-[5px] after:bg-black/10 after:content-['']",
+  coverImg: "absolute inset-0 size-full object-cover",
+  coverTitle:
+    "relative line-clamp-3 font-serif text-[16px] font-semibold leading-[1.15] tracking-[-0.01em] text-[var(--_ct)]",
+  coverAuthor: "relative mt-1 font-serif text-[11px] text-[var(--_ct)] opacity-80",
+  badges: "absolute right-[10px] top-[10px] z-[1] flex gap-[5px]",
+  bilingual:
+    "rounded-[var(--radius-pill)] bg-black/35 px-2 py-[3px] text-[10px] font-bold tracking-[0.03em] text-[#FBEEE3] backdrop-blur-[4px]",
+  body: "flex flex-col gap-[7px] px-[2px] pb-[2px]",
+  title:
+    "line-clamp-2 font-serif text-[length:var(--text-md)] font-semibold leading-[1.2] tracking-[-0.01em] text-ink",
+  author: "text-[length:var(--text-sm)] text-muted-foreground",
   chips: "mt-[2px] flex flex-wrap gap-[6px]",
-  meta: "mt-[2px] flex items-center gap-[6px] text-[length:var(--text-xs)] text-faint",
 };
 
 export const chip = {

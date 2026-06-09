@@ -152,16 +152,22 @@ export default function StorybookPage() {
 
       <Section title="Book card">
         <div className="grid grid-cols-[repeat(auto-fill,minmax(160px,1fr))] gap-[var(--space-4)]">
-          {books.slice(0, 4).map((book) => (
+          {books.slice(0, 3).map((book) => (
             <BookCard
               key={book.id}
               title={book.title}
               author={book.author}
               genres={book.genres}
-              estMinutes={book.estMinutes}
               hasBilingual={book.hasBilingual}
             />
           ))}
+          <BookCard
+            title="Pride and Prejudice"
+            author="Jane Austen"
+            genres={["Romance", "Classic"]}
+            cover="https://www.gutenberg.org/cache/epub/1342/pg1342.cover.medium.jpg"
+            hasBilingual
+          />
         </div>
       </Section>
 
