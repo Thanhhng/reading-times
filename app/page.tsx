@@ -1,10 +1,12 @@
+import Link from "next/link";
 import { BookOpen } from "lucide-react";
-import { Button } from "./_components/ui/Button";
-import { BookCard } from "./_components/ui/BookCard";
-import { ProgressBar } from "./_components/ui/ProgressBar";
-import { HeroArt } from "./_components/brand/HeroArt";
+import { cn } from "@/lib/utils";
+import { buttonVariants } from "@/components/ui/button";
+import { BookCard } from "@/components/ui/BookCard";
+import { ProgressBar } from "@/components/ui/ProgressBar";
+import { HeroArt } from "@/components/brand/HeroArt";
 import { books } from "./_data/books";
-import { home } from "./_styles/home";
+import { home } from "./classes/home";
 
 export default function HomePage() {
   const current = books[0];
@@ -14,7 +16,7 @@ export default function HomePage() {
   return (
     <div className={home.view}>
       <section className={home.hero}>
-        <div>
+        <div className="min-w-0">
           <div className={home.heroEyebrow}>Reels for reading</div>
           <h1 className={home.heroTitle}>Turn wasted time into wonderful time.</h1>
           <p className={home.heroText}>
@@ -22,12 +24,19 @@ export default function HomePage() {
             one calm screen at a time.
           </p>
           <div className={home.heroCta}>
-            <Button variant="primary" size="lg" iconLeft={<BookOpen />}>
+            <Link
+              href={`/read/${current.id}`}
+              className={cn(buttonVariants({ size: "lg" }))}
+            >
+              <BookOpen />
               Start reading
-            </Button>
-            <Button variant="ghost" size="lg">
+            </Link>
+            <Link
+              href="/library"
+              className={cn(buttonVariants({ variant: "ghost", size: "lg" }))}
+            >
               Browse the library
-            </Button>
+            </Link>
           </div>
         </div>
         <div className={home.heroArt}>
@@ -53,9 +62,13 @@ export default function HomePage() {
               caption={`${current.progress}% · ~5h còn lại`}
             />
           </div>
-          <Button variant="primary" iconLeft={<BookOpen />}>
+          <Link
+            href={`/read/${current.id}`}
+            className={cn(buttonVariants())}
+          >
+            <BookOpen />
             Read now
-          </Button>
+          </Link>
         </div>
       </section>
 

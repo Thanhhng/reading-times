@@ -1,52 +1,75 @@
-<svg viewBox="0 0 360 280" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="An open book with bilingual words rising">
-  
+<svg viewBox="0 0 520 360" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="A phone showing a vertical reading feed with a highlighted bilingual sentence, a swipe-up gesture and a morning sun">
+  <defs>
+    <linearGradient id="heroTile" x1="0" y1="0" x2="0.4" y2="1">
+      <stop offset="0" stop-color="var(--accent-soft, #F4E2D6)"></stop>
+      <stop offset="0.7" stop-color="var(--bg, #FAF6EE)"></stop>
+      <stop offset="1" stop-color="var(--bg, #FAF6EE)"></stop>
+    </linearGradient>
+  </defs>
 
   
-  <g stroke="currentColor" stroke-width="2.4" stroke-linejoin="round">
-    <rect x="214" y="14" width="118" height="34" rx="17" fill="var(--accent-soft, #F4E2D6)"></rect>
-    <rect x="238" y="58" width="100" height="32" rx="16" fill="var(--accent-2-soft, #DCEAE8)"></rect>
-  </g>
-  <text x="273" y="36" text-anchor="middle" font-family="var(--font-ui, sans-serif)" font-size="13" font-weight="600" fill="currentColor">moon <tspan fill="var(--accent, #C4663A)" font-weight="700">↔</tspan> trăng</text>
-  <text x="288" y="79" text-anchor="middle" font-family="var(--font-ui, sans-serif)" font-size="13" font-weight="600" fill="currentColor">rain <tspan fill="var(--accent-2, #2F7E78)" font-weight="700">↔</tspan> mưa</text>
-  <circle cx="222" cy="102" r="4.5" fill="var(--accent, #C4663A)"></circle>
-  <circle cx="206" cy="120" r="3" fill="var(--accent-2, #2F7E78)"></circle>
-  <circle cx="234" cy="128" r="2.4" fill="var(--accent, #C4663A)"></circle>
+  <rect x="6" y="6" width="508" height="348" rx="30" fill="url(#heroTile)"></rect>
 
   
-  <circle cx="120" cy="40" r="14" fill="var(--accent-soft, #F4E2D6)" stroke="currentColor" stroke-width="2.4"></circle>
-  <g stroke="var(--accent, #C4663A)" stroke-width="1.8" stroke-linecap="round">
-    <path d="M120 16v8"></path><path d="M96 40h8"></path><path d="M101 21l5 6"></path><path d="M139 21l-5 6"></path>
-  </g>
-
-  
-  <path d="M120 120c-22-16-50-18-74-12v92c24-6 52-4 74 12Z" fill="var(--accent-soft, #F4E2D6)"></path>
-  <path d="M120 110c-22-16-50-18-74-12v100c24-6 52-4 74 12 22-16 50-18 74-12V98c-24-6-52-4-74 12Z" fill="var(--surface, #FFFFFF)" stroke="currentColor" stroke-width="2.6" stroke-linejoin="round"></path>
-  <path d="M120 110v112" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"></path>
-  
-  <path d="M120 98v34l8-6 8 6V94" fill="var(--accent, #C4663A)" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"></path>
-
-  
-  <g stroke="var(--accent, #C4663A)" stroke-width="2" stroke-linecap="round">
-    <path d="M54 118h52"></path><path d="M54 130h56"></path><path d="M54 142h46"></path>
-  </g>
-  
-  <g stroke="var(--accent-2, #2F7E78)" stroke-width="2" stroke-linecap="round">
-    <path d="M150 118h52"></path><path d="M150 130h56"></path><path d="M150 142h46"></path>
-  </g>
-  
-  <g stroke="currentColor" stroke-width="1.8" stroke-linecap="round" opacity="0.32">
-    <path d="M58 164h44"></path><path d="M58 176h48"></path><path d="M154 164h44"></path><path d="M154 176h48"></path>
+  <g stroke="var(--accent, #C4663A)" stroke-width="3.2" stroke-linecap="round">
+    <circle cx="402" cy="92" r="19"></circle>
+    <path d="M402 56v-12"></path>
+    <path d="M402 140v-12"></path>
+    <path d="M438 92h12"></path>
+    <path d="M354 92h12"></path>
+    <path d="M428 66l8-8"></path>
+    <path d="M368 126l8-8"></path>
+    <path d="M428 118l8 8"></path>
+    <path d="M368 58l8 8"></path>
   </g>
 
   
-  <path d="M250 224h44v14c0 9-7 16-16 16h-12c-9 0-16-7-16-16v-14Z" fill="var(--accent-soft, #F4E2D6)" stroke="currentColor" stroke-width="2.4" stroke-linejoin="round"></path>
-  <path d="M294 228h8c5 0 9 4 9 9s-4 9-9 9h-4" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"></path>
-  <g stroke="var(--accent, #C4663A)" stroke-width="1.8" stroke-linecap="round" fill="none">
-    <path d="M264 206c-3 4 3 6 0 10"></path><path d="M278 204c-3 4 3 6 0 10"></path>
+  <path d="M96 70c0 9 3 12 12 12-9 0-12 3-12 12 0-9-3-12-12-12 9 0 12-3 12-12Z" fill="var(--accent-2, #2F7E78)" opacity="0.85"></path>
+
+  
+  <g style="font-family:var(--font-ui, sans-serif)">
+    <rect x="40" y="150" width="86" height="34" rx="17" fill="var(--accent-soft, #F4E2D6)"></rect>
+    <text x="83" y="172" text-anchor="middle" style="font-weight:600;font-size:16px" fill="var(--accent, #C4663A)">Hello</text>
+
+    <rect x="60" y="198" width="104" height="34" rx="17" fill="var(--accent-2-soft, #DCEAE8)"></rect>
+    <text x="112" y="220" text-anchor="middle" style="font-weight:600;font-size:16px" fill="var(--accent-2, #2F7E78)">Xin chào</text>
+  </g>
+  <path d="M120 188q8 6 4 14" stroke="var(--text, #2C2A26)" stroke-width="2" stroke-linecap="round" stroke-dasharray="2 5" opacity="0.4"></path>
+
+  
+  <rect x="218" y="46" width="84" height="20" rx="10" fill="var(--accent-2-soft, #DCEAE8)" opacity="0.85"></rect>
+
+  
+  <rect x="197" y="58" width="126" height="238" rx="26" fill="var(--surface-2, #F1EADC)" stroke="currentColor" stroke-width="3.4"></rect>
+  
+  <rect x="207" y="72" width="106" height="210" rx="15" fill="var(--surface, #FFFFFF)"></rect>
+  
+  <rect x="244" y="78" width="32" height="5" rx="2.5" fill="var(--border-strong, #D6CBB4)"></rect>
+
+  
+  <g stroke="currentColor" stroke-width="3.2" stroke-linecap="round" opacity="0.28">
+    <path d="M223 100h60"></path>
+    <path d="M223 111h44"></path>
   </g>
 
   
-  <path d="M44 254v-16" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"></path>
-  <path d="M44 244c-6-2-9-7-9-13 6 1 9 6 9 13Z" fill="var(--accent-2-soft, #DCEAE8)" stroke="currentColor" stroke-width="2" stroke-linejoin="round"></path>
-  <path d="M44 246c5-3 8-8 8-15-6 1-8 7-8 15Z" fill="var(--accent-soft, #F4E2D6)" stroke="currentColor" stroke-width="2" stroke-linejoin="round"></path>
+  <rect x="220" y="124" width="80" height="32" rx="8" fill="var(--highlight, #F3E2A4)"></rect>
+  <path d="M229 136h52" stroke="var(--accent, #C4663A)" stroke-width="3.2" stroke-linecap="round"></path>
+  <path d="M229 147h40" stroke="var(--accent-2, #2F7E78)" stroke-width="3" stroke-linecap="round"></path>
+
+  <g stroke="currentColor" stroke-width="3.2" stroke-linecap="round" opacity="0.28">
+    <path d="M223 172h68"></path>
+    <path d="M223 183h56"></path>
+    <path d="M223 194h40"></path>
+  </g>
+
+  
+  <rect x="244" y="268" width="32" height="4" rx="2" fill="currentColor" opacity="0.22"></rect>
+
+  
+  <g stroke="var(--accent, #C4663A)" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round" fill="none">
+    <path d="M384 232l8-8 8 8" opacity="0.45"></path>
+    <path d="M384 246l8-8 8 8" opacity="0.75"></path>
+  </g>
+  <circle cx="392" cy="266" r="10" fill="var(--surface, #FFFFFF)" stroke="var(--accent, #C4663A)" stroke-width="3.2"></circle>
 </svg>

@@ -1,10 +1,10 @@
 "use client";
 
 import { useState, type ReactNode } from "react";
-import { Segmented } from "../_components/ui/Segmented";
-import { ThemeSegmented } from "../_components/ui/ThemeSegmented";
-import { Switch } from "../_components/ui/Switch";
-import { settings } from "../_styles/settings";
+import { Segmented } from "@/components/ui/Segmented";
+import { ThemeSegmented } from "@/components/ui/ThemeSegmented";
+import { Switch } from "@/components/ui/Switch";
+import { settings } from "../classes/settings";
 
 function Group({ title, children }: { title: string; children: ReactNode }) {
   return (
@@ -30,7 +30,7 @@ function Row({
         <span className={settings.rowLabelTitle}>{label}</span>
         {hint && <small className={settings.rowLabelHint}>{hint}</small>}
       </div>
-      <div>{children}</div>
+      <div className="w-full @md/main:w-auto">{children}</div>
     </div>
   );
 }

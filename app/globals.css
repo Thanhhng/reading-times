@@ -350,6 +350,48 @@ button {
   color: var(--text-muted);
 }
 
+.rdr-sent {
+  font-family: var(--reader-font, var(--font-reading));
+}
+.rdr-sent__src {
+  cursor: default;
+  border-radius: 4px;
+  padding: 1px 2px;
+  margin: 0 -2px;
+  text-decoration: underline;
+  text-decoration-color: transparent;
+  text-underline-offset: 4px;
+  transition: background-color var(--dur-fast) var(--ease-soft),
+    text-decoration-color var(--dur-fast) var(--ease-soft);
+}
+.rdr-sent__tgt {
+  display: none;
+  color: var(--accent);
+  font-style: italic;
+  font-size: 0.92em;
+  line-height: 1.5;
+  margin: 4px 0 10px;
+  padding-left: 12px;
+  border-left: 2px solid var(--accent-soft);
+}
+[data-trans="parallel"] .rdr-sent__tgt {
+  display: block;
+}
+[data-trans="on-tap"] .rdr-sent__src {
+  cursor: pointer;
+}
+[data-trans="on-tap"] .rdr-sent__src:hover {
+  text-decoration-color: var(--accent);
+}
+[data-trans="on-tap"] .rdr-sent[data-open] .rdr-sent__src {
+  background: var(--highlight);
+  color: var(--highlight-ink);
+  text-decoration-color: transparent;
+}
+[data-trans="on-tap"] .rdr-sent[data-open] .rdr-sent__tgt {
+  display: block;
+}
+
 * {
   scrollbar-width: thin;
   scrollbar-color: var(--border-strong) transparent;

@@ -2,11 +2,11 @@ import type { Metadata } from "next";
 import { Fraunces, Literata, Be_Vietnam_Pro } from "next/font/google";
 import "./globals.css";
 import { cn } from "@/lib/utils";
-import { ThemeProvider } from "./components/theme-provider";
+import { ThemeProvider } from "@/components/theme-provider";
 import { SidebarProvider } from "@/components/ui/sidebar";
-import { DesktopSidebar } from "./_components/layout/DesktopSidebar";
-import { MobileSidebar } from "./_components/layout/MobileSidebar";
-import { MobileHeader } from "./_components/layout/MobileHeader";
+import { DesktopSidebar } from "@/components/layout/DesktopSidebar";
+import { MobileTopBar } from "@/components/layout/MobileTopBar";
+import { MobileBottomNav } from "@/components/layout/MobileBottomNav";
 
 const fraunces = Fraunces({
   subsets: ["latin", "vietnamese"],
@@ -60,11 +60,13 @@ export default function RootLayout({
         >
           <SidebarProvider>
             <DesktopSidebar />
-            <main className="flex min-w-0 flex-1 flex-col bg-background @container/main">
-              <MobileHeader />
-              {children}
-            </main>
-            <MobileSidebar />
+            <div className="flex min-w-0 flex-1 flex-col">
+              <MobileTopBar />
+              <main className="flex min-w-0 flex-1 flex-col bg-background pb-[calc(var(--space-8)+env(safe-area-inset-bottom,0))] @container/main md:pb-0">
+                {children}
+              </main>
+            </div>
+            <MobileBottomNav />
           </SidebarProvider>
         </ThemeProvider>
       </body>
