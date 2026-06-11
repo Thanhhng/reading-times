@@ -38,8 +38,7 @@ function Row({
 export default function SettingsPage() {
   const [language, setLanguage] = useState("en");
   const [font, setFont] = useState("serif");
-  const [mode, setMode] = useState("scroll");
-  const [wpm, setWpm] = useState(150);
+  const [mode, setMode] = useState("full");
 
   return (
     <div className={settings.view}>
@@ -95,30 +94,16 @@ export default function SettingsPage() {
             ]}
           />
         </Row>
-        <Row label="Default mode">
+        <Row label="Default mode" hint="Normal reading is the default">
           <Segmented
             value={mode}
             onChange={setMode}
             options={[
-              { value: "scroll", label: "Scroll" },
+              { value: "full", label: "Normal" },
               { value: "chapter", label: "Chapter" },
-              { value: "sessions", label: "Sessions" },
+              { value: "scroll", label: "Scroll" },
             ]}
           />
-        </Row>
-        <Row label="Reading speed" hint="Used to size duration sessions">
-          <div className={settings.wpm}>
-            <input
-              type="range"
-              min={80}
-              max={320}
-              step={10}
-              value={wpm}
-              onChange={(event) => setWpm(Number(event.target.value))}
-              className={settings.wpmInput}
-            />
-            <span className={settings.wpmValue}>{wpm} wpm</span>
-          </div>
         </Row>
       </Group>
 

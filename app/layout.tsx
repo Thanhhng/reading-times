@@ -7,6 +7,7 @@ import { SidebarProvider } from "@/components/ui/sidebar";
 import { DesktopSidebar } from "@/components/layout/DesktopSidebar";
 import { MobileTopBar } from "@/components/layout/MobileTopBar";
 import { MobileBottomNav } from "@/components/layout/MobileBottomNav";
+import { fetchBooks, readableBooks } from "@/app/_data/gutendex";
 
 const fraunces = Fraunces({
   subsets: ["latin", "vietnamese"],
@@ -35,11 +36,13 @@ export const metadata: Metadata = {
   description: "Turn wasted time into wonderful time.",
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const featured = readableBooks(await fetchBooks({ sort: "popular" }))[0];
+  const readHref = featured ? `/read/${featured.id}?mode=scroll` : "/library";
   return (
     <html
       lang="en"
@@ -66,7 +69,7 @@ export default function RootLayout({
                 {children}
               </main>
             </div>
-            <MobileBottomNav />
+            <MobileBottomNav readHref={readHref} />
           </SidebarProvider>
         </ThemeProvider>
       </body>

@@ -1,6 +1,6 @@
 import { notFound } from "next/navigation";
-import { books } from "@/app/_data/books";
-import { getSentences } from "@/app/_data/sentences";
+import { fetchBook } from "@/app/_data/gutendex";
+import { fetchReadingText, toChapters, toParagraphs } from "@/app/_data/readingText";
 import { Reader } from "@/components/reader/Reader";
 import { ReaderContent, type ReaderMode } from "@/components/reader/ReaderContent";
 
@@ -15,20 +15,40 @@ export default async function ReaderPage({
   searchParams,
 }: {
   params: Promise<{ bookId: string }>;
-  searchParams: Promise<{ mode?: string }>;
+  searchParams: Promise<{ mode?: string; ch?: string }>;
 }) {
   const { bookId } = await params;
-  const { mode: modeParam } = await searchParams;
+  const { mode: modeParam, ch } = await searchParams;
 
-  const book = books.find((item) => item.id === bookId);
-  if (!book) notFound();
+  const id = Number(bookId);
+  if (!Number.isInteger(id) || id <= 0) notFound();
+
+  const book = await fetchBook(id);
+  if (!book?.textUrl) notFound();
+
+  const text = await fetchReadingText(book.textUrl);
+  const chapters = text
+    ? toChapters(toParagraphs(text))
+    : [
+        {
+          title: null,
+          paragraphs: [
+            "The book text couldn't be loaded right now — go back and try again in a moment.",
+          ],
+        },
+      ];
 
   const mode = resolveMode(modeParam);
-  const sentences = getSentences(bookId);
+  const chapter = Number(ch);
 
   return (
     <Reader bookId={book.id} title={book.title} mode={mode}>
-      <ReaderContent mode={mode} sentences={sentences} chapterTitle="Chapter 1" />
+      <ReaderContent
+        mode={mode}
+        chapters={chapters}
+        chapter={Number.isFinite(chapter) && chapter > 0 ? chapter : 1}
+        bookId={book.id}
+      />
     </Reader>
   );
 }

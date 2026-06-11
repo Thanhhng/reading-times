@@ -15,6 +15,7 @@ export type ReaderPrefs = {
 type Props = {
   prefs: ReaderPrefs;
   setPref: <K extends keyof ReaderPrefs>(key: K, value: ReaderPrefs[K]) => void;
+  showTranslation?: boolean;
   onClose: () => void;
 };
 
@@ -42,7 +43,7 @@ const TRANSLATIONS: [ReaderPrefs["trans"], string][] = [
   ["parallel", "Parallel"],
 ];
 
-export function AaPanel({ prefs, setPref, onClose }: Props) {
+export function AaPanel({ prefs, setPref, showTranslation = true, onClose }: Props) {
   return (
     <div className={c.aa}>
       <div className={c.aaHead}>
@@ -124,21 +125,23 @@ export function AaPanel({ prefs, setPref, onClose }: Props) {
         </div>
       </div>
 
-      <div className={c.aaRow}>
-        <span className={c.aaLabel}>Translation</span>
-        <div className={c.seg}>
-          {TRANSLATIONS.map(([value, label]) => (
-            <button
-              key={value}
-              type="button"
-              className={cn(c.segBtn, prefs.trans === value && c.segBtnActive)}
-              onClick={() => setPref("trans", value)}
-            >
-              {label}
-            </button>
-          ))}
+      {showTranslation && (
+        <div className={c.aaRow}>
+          <span className={c.aaLabel}>Translation</span>
+          <div className={c.seg}>
+            {TRANSLATIONS.map(([value, label]) => (
+              <button
+                key={value}
+                type="button"
+                className={cn(c.segBtn, prefs.trans === value && c.segBtnActive)}
+                onClick={() => setPref("trans", value)}
+              >
+                {label}
+              </button>
+            ))}
+          </div>
         </div>
-      </div>
+      )}
     </div>
   );
 }

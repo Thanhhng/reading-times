@@ -3,15 +3,51 @@ import { BookOpen } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { buttonVariants } from "@/components/ui/button";
 import { BookCard } from "@/components/ui/BookCard";
-import { ProgressBar } from "@/components/ui/ProgressBar";
 import { HeroArt } from "@/components/brand/HeroArt";
-import { books } from "./_data/books";
+import { fetchBooks, readableBooks, type LibraryBook } from "./_data/gutendex";
 import { home } from "./classes/home";
 
-export default function HomePage() {
-  const current = books[0];
-  const shorts = books.filter((book) => book.estMinutes <= 160);
-  const classics = books.filter((book) => book.genres.includes("Classic"));
+function Rail({
+  title,
+  href,
+  books,
+}: {
+  title: string;
+  href: string;
+  books: LibraryBook[];
+}) {
+  if (books.length === 0) return null;
+  return (
+    <section className={home.rail}>
+      <div className={home.railHead}>
+        <h2 className={home.railTitle}>{title}</h2>
+        <Link href={href} className={home.railSeeAll}>
+          See all
+        </Link>
+      </div>
+      <div className={home.railScroll}>
+        {books.map((book) => (
+          <Link
+            key={book.id}
+            href={`/library/${book.id}`}
+            className="block min-w-0"
+          >
+            <BookCard {...book} />
+          </Link>
+        ))}
+      </div>
+    </section>
+  );
+}
+
+export default async function HomePage() {
+  const [popularData, newestData] = await Promise.all([
+    fetchBooks({ sort: "popular" }),
+    fetchBooks({ sort: "descending" }),
+  ]);
+  const popular = readableBooks(popularData).slice(0, 10);
+  const newest = readableBooks(newestData).slice(0, 10);
+  const featured = popular[0];
 
   return (
     <div className={home.view}>
@@ -25,7 +61,7 @@ export default function HomePage() {
           </p>
           <div className={home.heroCta}>
             <Link
-              href={`/read/${current.id}`}
+              href={featured ? `/read/${featured.id}` : "/library"}
               className={cn(buttonVariants({ size: "lg" }))}
             >
               <BookOpen />
@@ -44,71 +80,12 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className={home.rail}>
-        <div className={home.railHead}>
-          <h2 className={home.railTitle}>Continue reading</h2>
-        </div>
-        <div className={home.continueCard}>
-          <div className={home.continueCover}>
-            <span className={home.continueCoverTitle}>{current.title}</span>
-          </div>
-          <div className={home.continueBody}>
-            <div className={home.continueTitle}>{current.title}</div>
-            <div className={home.continueMeta}>
-              {current.author} · Chapter 3 · 12 phút để xong chương này
-            </div>
-            <ProgressBar
-              value={current.progress ?? 0}
-              caption={`${current.progress}% · ~5h còn lại`}
-            />
-          </div>
-          <Link
-            href={`/read/${current.id}`}
-            className={cn(buttonVariants())}
-          >
-            <BookOpen />
-            Read now
-          </Link>
-        </div>
-      </section>
-
-      <section className={home.rail}>
-        <div className={home.railHead}>
-          <h2 className={home.railTitle}>Short reads · under 30 minutes</h2>
-          <span className={home.railSeeAll}>See all</span>
-        </div>
-        <div className={home.railScroll}>
-          {shorts.map((book) => (
-            <BookCard
-              key={book.id}
-              title={book.title}
-              author={book.author}
-              genres={book.genres}
-              estMinutes={book.estMinutes}
-              hasBilingual={book.hasBilingual}
-            />
-          ))}
-        </div>
-      </section>
-
-      <section className={home.rail}>
-        <div className={home.railHead}>
-          <h2 className={home.railTitle}>Classics</h2>
-          <span className={home.railSeeAll}>See all</span>
-        </div>
-        <div className={home.railScroll}>
-          {classics.map((book) => (
-            <BookCard
-              key={book.id}
-              title={book.title}
-              author={book.author}
-              genres={book.genres}
-              estMinutes={book.estMinutes}
-              hasBilingual={book.hasBilingual}
-            />
-          ))}
-        </div>
-      </section>
+      <Rail title="Popular now" href="/library" books={popular} />
+      <Rail
+        title="Recently added"
+        href="/library?sort=descending"
+        books={newest}
+      />
     </div>
   );
 }

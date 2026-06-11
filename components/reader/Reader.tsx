@@ -25,11 +25,13 @@ export function Reader({
   bookId,
   title,
   mode,
+  hasBilingual = false,
   children,
 }: {
-  bookId: string;
+  bookId: number | string;
   title: string;
   mode: ReaderMode;
+  hasBilingual?: boolean;
   children: ReactNode;
 }) {
   const [prefs, setPrefs] = useState<ReaderPrefs>({
@@ -37,7 +39,7 @@ export function Reader({
     font: "serif",
     leading: 1.75,
     bg: "auto",
-    trans: "on-tap",
+    trans: hasBilingual ? "on-tap" : "hidden",
   });
   const setPref = <K extends keyof ReaderPrefs>(key: K, value: ReaderPrefs[K]) =>
     setPrefs((prev) => ({ ...prev, [key]: value }));
@@ -129,7 +131,14 @@ export function Reader({
           <ThemeToggle className={c.toolBtn} />
         </div>
 
-        {showAa && <AaPanel prefs={prefs} setPref={setPref} onClose={() => setShowAa(false)} />}
+        {showAa && (
+          <AaPanel
+            prefs={prefs}
+            setPref={setPref}
+            showTranslation={hasBilingual}
+            onClose={() => setShowAa(false)}
+          />
+        )}
       </div>
 
       <div className={c.scroll} onScroll={onScroll} onClick={onContentClick}>

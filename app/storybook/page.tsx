@@ -16,7 +16,7 @@ import { IconButton } from "@/components/ui/IconButton";
 import { Badge } from "@/components/ui/Badge";
 import { Tag } from "@/components/ui/Tag";
 import { Avatar } from "@/components/ui/Avatar";
-import { BookCard } from "@/components/ui/BookCard";
+import { BookCard, type BookCardProps } from "@/components/ui/BookCard";
 import { ProgressBar } from "@/components/ui/ProgressBar";
 import { GenreChip } from "@/components/ui/GenreChip";
 import { Segmented } from "@/components/ui/Segmented";
@@ -24,9 +24,19 @@ import { ThemeSegmented } from "@/components/ui/ThemeSegmented";
 import { Switch } from "@/components/ui/Switch";
 import { BrandGlyph } from "@/components/brand/BrandGlyph";
 import { HeroArt } from "@/components/brand/HeroArt";
-import { books } from "../_data/books";
 import { chip } from "../classes/ui";
 import { storybook as s } from "../classes/storybook";
+
+const demoBooks: BookCardProps[] = [
+  {
+    title: "Pride and Prejudice",
+    author: "Jane Austen",
+    genres: ["Romance", "Classics of Literature"],
+    hasBilingual: true,
+  },
+  { title: "The Time Machine", author: "H. G. Wells", genres: ["Sci-Fi"] },
+  { title: "Walden", author: "Henry D. Thoreau", genres: ["Nature"] },
+];
 
 export default function StorybookPage() {
   const [segment, setSegment] = useState("one");
@@ -152,14 +162,8 @@ export default function StorybookPage() {
 
       <Section title="Book card">
         <div className="grid grid-cols-[repeat(auto-fill,minmax(160px,1fr))] gap-[var(--space-4)]">
-          {books.slice(0, 3).map((book) => (
-            <BookCard
-              key={book.id}
-              title={book.title}
-              author={book.author}
-              genres={book.genres}
-              hasBilingual={book.hasBilingual}
-            />
+          {demoBooks.map((book) => (
+            <BookCard key={book.title} {...book} />
           ))}
           <BookCard
             title="Pride and Prejudice"

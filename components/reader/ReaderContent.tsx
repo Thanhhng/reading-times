@@ -1,21 +1,21 @@
+import Link from "next/link";
+import { ChevronLeft, ChevronRight } from "lucide-react";
+import { cn } from "@/lib/utils";
 import { reader as c } from "@/app/classes/reader";
-import type { Sentence } from "@/app/_data/sentences";
-import { BilingualSentence } from "./BilingualSentence";
+import type { Chapter } from "@/app/_data/readingText";
 
 export type ReaderMode = "full" | "chapter" | "scroll";
 
-function countWords(text: string): number {
-  return text.trim().split(/\s+/).length;
-}
+const WORDS_PER_SCREEN = 130;
 
-function groupScreens(sentences: Sentence[], perScreen = 75): Sentence[][] {
-  const screens: Sentence[][] = [];
-  let current: Sentence[] = [];
+function groupScreens(paragraphs: string[]): string[][] {
+  const screens: string[][] = [];
+  let current: string[] = [];
   let count = 0;
-  for (const sentence of sentences) {
-    current.push(sentence);
-    count += countWords(sentence.src);
-    if (count >= perScreen) {
+  for (const paragraph of paragraphs) {
+    current.push(paragraph);
+    count += paragraph.split(" ").length;
+    if (count >= WORDS_PER_SCREEN) {
       screens.push(current);
       current = [];
       count = 0;
@@ -27,24 +27,29 @@ function groupScreens(sentences: Sentence[], perScreen = 75): Sentence[][] {
 
 export function ReaderContent({
   mode,
-  sentences,
-  chapterTitle,
+  chapters,
+  chapter,
+  bookId,
 }: {
   mode: ReaderMode;
-  sentences: Sentence[];
-  chapterTitle: string;
+  chapters: Chapter[];
+  chapter: number;
+  bookId: number;
 }) {
   if (mode === "scroll") {
-    const screens = groupScreens(sentences);
+    const paragraphs = chapters.flatMap((ch) =>
+      ch.title ? [ch.title, ...ch.paragraphs] : ch.paragraphs,
+    );
+    const screens = groupScreens(paragraphs);
     return (
       <div className={c.col}>
         {screens.map((screen, i) => (
-          <div key={screen[0].id} className={c.screen}>
-            <p className={c.para}>
-              {screen.map((s) => (
-                <BilingualSentence key={s.id} src={s.src} tgt={s.tgt} />
-              ))}
-            </p>
+          <div key={i} className={c.screen}>
+            {screen.map((paragraph, j) => (
+              <p key={j} className={cn(c.para, c.paraGap)}>
+                {paragraph}
+              </p>
+            ))}
             <div className={c.screenFoot}>
               {i + 1} / {screens.length}
             </div>
@@ -54,14 +59,62 @@ export function ReaderContent({
     );
   }
 
+  if (mode === "chapter") {
+    const index = Math.min(Math.max(chapter, 1), chapters.length);
+    const current = chapters[index - 1];
+    return (
+      <div className={c.col}>
+        <div className={c.chapterTitle}>
+          {current.title ?? `Chapter ${index}`}
+        </div>
+        {current.paragraphs.map((paragraph, i) => (
+          <p key={i} className={cn(c.para, c.paraGap)}>
+            {paragraph}
+          </p>
+        ))}
+        <nav className={c.chapterNav} aria-label="Chapters">
+          {index > 1 ? (
+            <Link
+              href={`/read/${bookId}?mode=chapter&ch=${index - 1}`}
+              className={c.chapterNavBtn}
+            >
+              <ChevronLeft />
+              Previous
+            </Link>
+          ) : (
+            <span />
+          )}
+          <span className={c.screenFoot}>
+            {index} / {chapters.length}
+          </span>
+          {index < chapters.length ? (
+            <Link
+              href={`/read/${bookId}?mode=chapter&ch=${index + 1}`}
+              className={c.chapterNavBtn}
+            >
+              Next
+              <ChevronRight />
+            </Link>
+          ) : (
+            <span />
+          )}
+        </nav>
+      </div>
+    );
+  }
+
   return (
     <div className={c.col}>
-      {mode === "chapter" && <div className={c.chapterTitle}>{chapterTitle}</div>}
-      <p className={c.para}>
-        {sentences.map((s) => (
-          <BilingualSentence key={s.id} src={s.src} tgt={s.tgt} />
-        ))}
-      </p>
+      {chapters.map((ch, i) => (
+        <section key={i}>
+          {ch.title && <div className={c.chapterTitle}>{ch.title}</div>}
+          {ch.paragraphs.map((paragraph, j) => (
+            <p key={j} className={cn(c.para, c.paraGap)}>
+              {paragraph}
+            </p>
+          ))}
+        </section>
+      ))}
     </div>
   );
 }

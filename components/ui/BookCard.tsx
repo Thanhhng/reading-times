@@ -1,4 +1,5 @@
 import type { CSSProperties } from "react";
+import Image from "next/image";
 import { bookCard } from "@/app/classes/ui";
 import { GenreChip } from "./GenreChip";
 
@@ -19,7 +20,7 @@ const COVERS: [string, string][] = [
   ["#6E5A86", "#ECE5F1"],
 ];
 
-function coverFor(title: string): [string, string] {
+export function coverFor(title: string): [string, string] {
   let hash = 0;
   for (let i = 0; i < title.length; i++) {
     hash = (hash * 31 + title.charCodeAt(i)) >>> 0;
@@ -40,8 +41,14 @@ export function BookCard({
     <article className={bookCard.root} style={coverStyle}>
       <div className={bookCard.cover}>
         {cover && (
-          // eslint-disable-next-line @next/next/no-img-element
-          <img className={bookCard.coverImg} src={cover} alt={title} loading="lazy" />
+          <Image
+            className={bookCard.coverImg}
+            src={cover}
+            alt={title}
+            fill
+            loading="eager"
+            sizes="(min-width:1280px) 20vw, (min-width:1024px) 25vw, (min-width:640px) 33vw, 50vw"
+          />
         )}
         {hasBilingual && (
           <div className={bookCard.badges}>
