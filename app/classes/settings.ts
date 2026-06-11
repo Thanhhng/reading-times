@@ -17,10 +17,6 @@ export const settings = {
   rowLabelTitle: "text-[length:var(--text-base)] font-medium text-ink",
   rowLabelHint: "text-[length:var(--text-xs)] text-muted-foreground",
 
-  wpm: "flex w-full flex-col items-start gap-2 @sm/main:w-auto @sm/main:flex-row @sm/main:items-center @sm/main:gap-3",
-  wpmInput: "w-full accent-[var(--accent)] @sm/main:w-[200px]",
-  wpmValue: "min-w-[64px] text-right text-[length:var(--text-sm)] tabular-nums text-ink",
-
   providers: "flex gap-2",
   badge: "inline-flex items-center gap-[5px] rounded-[var(--radius-pill)] border border-border bg-surface-2 px-[10px] py-[3px] text-[length:var(--text-xs)] font-medium text-muted-foreground",
   badgeDot: "size-[7px] rounded-full bg-accent-2",

@@ -11,7 +11,6 @@ import {
   BookOpen,
   User,
 } from "lucide-react";
-import { books } from "./books";
 
 export type NavItem = {
   title: string;
@@ -26,8 +25,6 @@ export type BottomNavTab = {
   label: string;
   href: string;
   icon: LucideIcon;
-  primary?: boolean;
-  dot?: boolean;
 };
 
 export const mainNav: NavItem[] = [
@@ -44,17 +41,9 @@ export const gatedNav: NavItem[] = [
   { title: "Highlights", href: "/highlights", icon: Highlighter, locked: true },
 ];
 
-const continueBook = books.find((book) => book.progress) ?? books[0];
-
 export const bottomNavTabs: BottomNavTab[] = [
   { id: "home", label: "Home", href: "/", icon: Home },
   { id: "library", label: "Library", href: "/library", icon: Library },
-  {
-    id: "read",
-    label: "Read",
-    href: `/read/${continueBook.id}`,
-    icon: BookOpen,
-    primary: true,
-  },
+  { id: "read", label: "Read", href: "/library", icon: BookOpen },
   { id: "profile", label: "Profile", href: "/settings", icon: User },
 ];

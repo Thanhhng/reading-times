@@ -13,11 +13,4 @@ export const home = {
   railTitle: "text-[length:var(--text-xl)]",
   railSeeAll: "text-[length:var(--text-xs)] font-semibold uppercase tracking-[.08em] text-muted-foreground",
   railScroll: "grid min-w-0 snap-x grid-flow-col auto-cols-[160px] gap-[var(--space-4)] overflow-x-auto pb-2 @sm/main:auto-cols-[184px]",
-
-  continueCard: "flex flex-wrap items-center gap-[var(--space-4)] rounded-[var(--radius-lg)] border border-border bg-surface p-[var(--space-4)] shadow-[var(--shadow-sm)]",
-  continueCover: "flex aspect-[3/4] w-[64px] shrink-0 items-end rounded-[var(--radius-sm)] bg-accent p-2 shadow-[var(--shadow-sm)] @sm/main:w-[70px]",
-  continueCoverTitle: "font-serif font-semibold text-[11px] leading-[1.1] text-[#FBEEE3]",
-  continueBody: "flex min-w-0 flex-1 flex-col gap-2",
-  continueTitle: "font-serif font-semibold text-[length:var(--text-lg)]",
-  continueMeta: "text-[length:var(--text-sm)] text-muted-foreground",
 };

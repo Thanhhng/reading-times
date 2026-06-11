@@ -26,6 +26,10 @@ export const reader = {
     "mb-[var(--space-5)] font-serif text-[length:var(--text-2xl)] font-semibold text-[var(--reader-text)]",
   para:
     "text-[length:var(--reader-size)] leading-[var(--reader-leading)] text-[var(--reader-text)] [font-family:var(--reader-font)]",
+  paraGap: "mb-[1em] last:mb-0",
+  chapterNav: "mt-[var(--space-7)] flex items-center justify-between gap-[var(--space-3)]",
+  chapterNavBtn:
+    "inline-flex items-center gap-[6px] rounded-[var(--radius-md)] border border-[var(--reader-rule)] px-[14px] py-[8px] font-sans text-[length:var(--text-sm)] font-medium text-[var(--reader-text)] transition-colors hover:bg-[color-mix(in_srgb,var(--reader-text)_8%,transparent)] [&_svg]:size-4",
   screen:
     "mb-[var(--space-6)] border-b border-dashed border-[var(--reader-rule)] pb-[var(--space-6)] last-of-type:border-b-0",
   screenFoot:

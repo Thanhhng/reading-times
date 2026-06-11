@@ -31,17 +31,17 @@ export const avatar = {
 };
 
 export const bookCard = {
-  root: "group flex w-full flex-col gap-3 rounded-[var(--radius-lg)] border border-border bg-surface p-3 text-left shadow-[var(--shadow-sm)] transition-[transform,box-shadow,border-color] duration-[var(--dur-base)] ease-[var(--ease-out)] hover:-translate-y-1 hover:border-[var(--border-strong)] hover:shadow-[var(--shadow-hover)]",
+  root: "group flex h-full w-full flex-col overflow-hidden rounded-[var(--radius-lg)] border border-border bg-surface text-left shadow-[var(--shadow-sm)] transition-[transform,box-shadow,border-color] duration-[var(--dur-base)] ease-[var(--ease-out)] hover:-translate-y-1 hover:border-[var(--border-strong)] hover:shadow-[var(--shadow-hover)]",
   cover:
-    "relative flex aspect-[3/4] flex-col justify-end overflow-hidden rounded-[var(--radius-md)] bg-[var(--_c1)] p-[14px] shadow-[inset_0_0_0_1px_rgba(0,0,0,0.06)] after:absolute after:inset-y-0 after:left-0 after:w-[5px] after:bg-black/10 after:content-['']",
-  coverImg: "absolute inset-0 size-full object-cover",
+    "relative flex aspect-[3/4] w-full flex-col justify-end overflow-hidden bg-[var(--_c1)] p-[14px] shadow-[inset_0_0_0_1px_rgba(0,0,0,0.06)] after:absolute after:inset-y-0 after:left-0 after:w-[5px] after:bg-black/10 after:content-['']",
+  coverImg: "object-cover",
   coverTitle:
     "relative line-clamp-3 font-serif text-[16px] font-semibold leading-[1.15] tracking-[-0.01em] text-[var(--_ct)]",
   coverAuthor: "relative mt-1 font-serif text-[11px] text-[var(--_ct)] opacity-80",
   badges: "absolute right-[10px] top-[10px] z-[1] flex gap-[5px]",
   bilingual:
     "rounded-[var(--radius-pill)] bg-black/35 px-2 py-[3px] text-[10px] font-bold tracking-[0.03em] text-[#FBEEE3] backdrop-blur-[4px]",
-  body: "flex flex-col gap-[7px] px-[2px] pb-[2px]",
+  body: "flex flex-1 flex-col gap-[7px] p-3",
   title:
     "line-clamp-2 font-serif text-[length:var(--text-md)] font-semibold leading-[1.2] tracking-[-0.01em] text-ink",
   author: "text-[length:var(--text-sm)] text-muted-foreground",
