@@ -2,7 +2,7 @@ import type { CSSProperties } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { notFound } from "next/navigation";
-import { AlignJustify, BookOpen, ChevronLeft, List, ScrollText } from "lucide-react";
+import { AlignJustify, BookOpen, ChevronLeft, List } from "lucide-react";
 import { fetchBook } from "@/app/_data/gutendex";
 import { bookPage as c } from "@/app/classes/library";
 import { Badge } from "@/components/ui/Badge";
@@ -13,7 +13,6 @@ import { cn } from "@/lib/utils";
 const MODES = [
   { id: "full", label: "Normal reading", icon: AlignJustify },
   { id: "chapter", label: "Chapter", icon: List },
-  { id: "scroll", label: "Scroll feed", icon: ScrollText },
 ];
 
 export default async function BookDetailPage({
@@ -120,9 +119,6 @@ export default async function BookDetailPage({
                 );
               })}
             </div>
-          </div>
-
-          <div className={c.cta}>
             <Link
               href={`/read/${book.id}`}
               className={cn(buttonVariants({ size: "lg" }))}

@@ -2,7 +2,7 @@
 
 import { useEffect, useRef, useState, type CSSProperties, type ReactNode } from "react";
 import Link from "next/link";
-import { AlignJustify, ChevronLeft, List, ScrollText, Type } from "lucide-react";
+import { AlignJustify, ChevronLeft, List, Type } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { reader as c } from "@/app/classes/reader";
 import { ThemeToggle } from "@/components/layout/ThemeToggle";
@@ -12,7 +12,6 @@ import type { ReaderMode } from "./ReaderContent";
 const MODES: { id: ReaderMode; label: string; icon: typeof AlignJustify }[] = [
   { id: "full", label: "Full", icon: AlignJustify },
   { id: "chapter", label: "Chapter", icon: List },
-  { id: "scroll", label: "Scroll feed", icon: ScrollText },
 ];
 
 const FONT_VAR: Record<ReaderPrefs["font"], string> = {

@@ -4,7 +4,7 @@ import { fetchReadingText, toChapters, toParagraphs } from "@/app/_data/readingT
 import { Reader } from "@/components/reader/Reader";
 import { ReaderContent, type ReaderMode } from "@/components/reader/ReaderContent";
 
-const MODES: ReaderMode[] = ["full", "chapter", "scroll"];
+const MODES: ReaderMode[] = ["full", "chapter"];
 
 function resolveMode(value: string | undefined): ReaderMode {
   return MODES.includes(value as ReaderMode) ? (value as ReaderMode) : "full";

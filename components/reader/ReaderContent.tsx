@@ -4,26 +4,7 @@ import { cn } from "@/lib/utils";
 import { reader as c } from "@/app/classes/reader";
 import type { Chapter } from "@/app/_data/readingText";
 
-export type ReaderMode = "full" | "chapter" | "scroll";
-
-const WORDS_PER_SCREEN = 130;
-
-function groupScreens(paragraphs: string[]): string[][] {
-  const screens: string[][] = [];
-  let current: string[] = [];
-  let count = 0;
-  for (const paragraph of paragraphs) {
-    current.push(paragraph);
-    count += paragraph.split(" ").length;
-    if (count >= WORDS_PER_SCREEN) {
-      screens.push(current);
-      current = [];
-      count = 0;
-    }
-  }
-  if (current.length) screens.push(current);
-  return screens;
-}
+export type ReaderMode = "full" | "chapter";
 
 export function ReaderContent({
   mode,
@@ -36,28 +17,6 @@ export function ReaderContent({
   chapter: number;
   bookId: number;
 }) {
-  if (mode === "scroll") {
-    const paragraphs = chapters.flatMap((ch) =>
-      ch.title ? [ch.title, ...ch.paragraphs] : ch.paragraphs,
-    );
-    const screens = groupScreens(paragraphs);
-    return (
-      <div className={c.col}>
-        {screens.map((screen, i) => (
-          <div key={i} className={c.screen}>
-            {screen.map((paragraph, j) => (
-              <p key={j} className={cn(c.para, c.paraGap)}>
-                {paragraph}
-              </p>
-            ))}
-            <div className={c.screenFoot}>
-              {i + 1} / {screens.length}
-            </div>
-          </div>
-        ))}
-      </div>
-    );
-  }
 
   if (mode === "chapter") {
     const index = Math.min(Math.max(chapter, 1), chapters.length);

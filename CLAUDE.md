@@ -17,9 +17,9 @@ product, data, and design all live here.
 ## Repo structure
 
 - `app/` — routes: `/` (home), `/library`, `/library/[bookId]` (book detail), `/read/[bookId]`
-  (reader), `/settings`, `/storybook` (component gallery, inline demo data only).
+  (reader), `/settings`.
 - `app/classes/*.ts` — **Tailwind class objects** (`ui`, `library`, `home`, `reader`, `sidebar`,
-  `bottomNav`, `mobileBar`, `settings`, `storybook`). Components import these instead of inlining
+  `bottomNav`, `mobileBar`, `settings`). Components import these instead of inlining
   long class strings. This is the house pattern — follow it.
 - `app/_data/*.ts` — data layer, all live (no fixtures):
   - `gutendex.ts` — types + mappers + `fetchBooks` / `fetchBook` against the self-host.
@@ -91,16 +91,16 @@ lines; `toChapters` groups paragraphs under heading-like lines (CHAPTER/PART/BOO
   (downloads · language · public domain), Gutendex summary, "Translated by …" when non-empty,
   reading-mode launcher, and "Read now" → `/read/{id}`. Words/est-minutes are intentionally
   omitted (not in Gutendex; don't fetch full text for a grid stat).
-- **Reader (`/read/[bookId]?mode=&ch=`)** — numeric Gutenberg id. Three modes, **`full`
+- **Reader (`/read/[bookId]?mode=&ch=`)** — numeric Gutenberg id. Two modes, **`full`
   ("Normal reading") is the default**: `full` = whole book with chapter headings, `chapter` =
-  one chapter at a time with Previous/Next (`?ch=N`), `scroll` = feed of ~130-word screens.
+  one chapter at a time with Previous/Next (`?ch=N`).
   Duration/session-based reading was removed. The Aa panel (size/font/leading/background) hides
   its Translation row while books are EN-only.
 - **Settings (`/settings`)** — local-only prefs UI; default mode segmented control is
-  Normal/Chapter/Scroll (no Sessions, no wpm slider).
+  Normal/Chapter (no Sessions, no wpm slider).
 - **Mobile nav** — bottom tab bar (≤`md`) with four equal flat tabs: Home · Library · Read ·
   Profile. No raised primary pill; active tab = accent-soft pill + accent text. "Read" jumps into
-  the most popular book in scroll mode (href computed in `app/layout.tsx` from real data,
+  the most popular book in normal reading (href computed in `app/layout.tsx` from real data,
   `/library` fallback).
 
 ## Design system (non-negotiable)

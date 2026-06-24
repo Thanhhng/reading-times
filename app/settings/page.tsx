@@ -101,7 +101,6 @@ export default function SettingsPage() {
             options={[
               { value: "full", label: "Normal" },
               { value: "chapter", label: "Chapter" },
-              { value: "scroll", label: "Scroll" },
             ]}
           />
         </Row>

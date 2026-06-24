@@ -42,7 +42,7 @@ export default async function RootLayout({
   children: React.ReactNode;
 }>) {
   const featured = readableBooks(await fetchBooks({ sort: "popular" }))[0];
-  const readHref = featured ? `/read/${featured.id}?mode=scroll` : "/library";
+  const readHref = featured ? `/read/${featured.id}` : "/library";
   return (
     <html
       lang="en"

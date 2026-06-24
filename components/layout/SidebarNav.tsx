@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { ChevronRight, LayoutGrid, Lock, Settings } from "lucide-react";
+import { ChevronRight, Lock, Settings } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { sidebar } from "@/app/classes/sidebar";
 import { gatedNav, mainNav, type NavItem } from "@/app/_data/nav";
@@ -84,22 +84,6 @@ export function SidebarNav({ collapsed = false, onNavigate }: SidebarNavProps) {
       </nav>
 
       <div className={sidebar.foot}>
-        <Link
-          href="/storybook"
-          onClick={onNavigate}
-          title={collapsed ? "Storybook" : undefined}
-          aria-current={pathname === "/storybook" ? "page" : undefined}
-          className={cn(
-            sidebar.item,
-            pathname === "/storybook" && sidebar.itemActive,
-            collapsed && sidebar.itemCollapsed,
-          )}
-        >
-          <span className={sidebar.itemIcon}>
-            <LayoutGrid />
-          </span>
-          {!collapsed && <span className={sidebar.itemLabel}>Storybook</span>}
-        </Link>
         <Link
           href="/settings"
           onClick={onNavigate}

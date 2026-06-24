@@ -50,7 +50,7 @@ export const bookPage = {
     "max-w-[68ch] font-serif text-[length:var(--text-md)] leading-[1.65] text-ink",
   translators: "text-[length:var(--text-sm)] italic text-muted-foreground",
   modes: "flex flex-col gap-[var(--space-3)]",
-  modeGrid: "grid grid-cols-1 gap-[10px] @sm/main:grid-cols-3",
+  modeGrid: "grid grid-cols-1 gap-[10px] @sm/main:grid-cols-2",
   modeBtn:
     "flex items-center gap-[10px] rounded-[var(--radius-md)] border border-border bg-surface px-[14px] py-[12px] text-[length:var(--text-sm)] font-medium text-ink transition-colors hover:border-[var(--border-strong)] hover:bg-surface-2 [&_svg]:size-[18px] [&_svg]:text-accent",
   cta: "flex flex-wrap items-center gap-[var(--space-3)]",
