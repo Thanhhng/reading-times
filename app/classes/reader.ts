@@ -67,12 +67,21 @@ export const reader = {
     "z-[30] rounded-[var(--radius-pill)] border border-border bg-surface shadow-[var(--shadow-lg)] animate-in fade-in-0 zoom-in-95 duration-150",
   transPopupBtn:
     "inline-flex items-center gap-[6px] rounded-[var(--radius-pill)] px-[12px] py-[6px] font-sans text-[length:var(--text-sm)] font-semibold text-accent transition-colors hover:bg-accent-soft [&_svg]:size-[15px]",
+  transMark:
+    "bg-transparent underline text-accent decoration-2 underline-offset-[3px] [text-decoration-skip-ink:none] transition-colors data-[status=done]:text-accent data-[status=done]:decoration-accent data-[status=loading]:decoration-dotted data-[status=loading]:decoration-[color-mix(in_srgb,var(--reader-text)_45%,transparent)] data-[status=error]:text-danger data-[status=error]:decoration-danger data-[status=error]:decoration-wavy",
+  transList: "mb-[1em] flex flex-col gap-[var(--space-3)]",
+  transItem:
+    "relative border-l-2 border-accent-soft pl-[12px] pr-[28px] mt-2",
+  transDismiss:
+    "absolute right-0 top-0 inline-flex size-[22px] items-center justify-center rounded-[var(--radius-sm)] text-faint transition-colors hover:bg-[color-mix(in_srgb,var(--reader-text)_8%,transparent)] hover:text-[var(--reader-text)] [&_svg]:size-[14px]",
+  transSource:
+    "block font-sans text-[length:var(--text-xs)] text-muted-foreground",
   transBlock:
-    "mb-[1em] border-l-2 border-accent-soft pl-[12px] text-[length:calc(var(--reader-size)*0.95)] italic leading-[var(--lh-normal)] text-accent [font-family:var(--reader-font)]",
+    "block text-[length:calc(var(--reader-size)*0.95)] italic leading-[var(--reader-leading)] text-accent [font-family:var(--reader-font)]",
   transLoading:
-    "mb-[1em] border-l-2 border-accent-soft pl-[12px] font-sans text-[length:var(--text-sm)] italic text-muted-foreground",
+    "block font-sans text-[length:var(--text-sm)] italic text-muted-foreground",
   transError:
-    "mb-[1em] border-l-2 border-danger pl-[12px] font-sans text-[length:var(--text-sm)] text-danger",
+    "block font-sans text-[length:var(--text-sm)] text-danger",
   transRetry:
     "font-semibold text-accent underline underline-offset-2 transition-colors hover:text-accent-hover",
 };
