@@ -8,6 +8,8 @@ import { reader as c } from "@/app/classes/reader";
 import { ThemeToggle } from "@/components/layout/ThemeToggle";
 import { AaPanel, type ReaderPrefs } from "./AaPanel";
 import type { ReaderMode } from "./ReaderContent";
+import { SelectionPopover } from "./SelectionPopover";
+import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip";
 
 const MODES: { id: ReaderMode; label: string; icon: typeof AlignJustify }[] = [
   { id: "full", label: "Full", icon: AlignJustify },
@@ -87,9 +89,16 @@ export function Reader({
       style={shellStyle}
     >
       <div className={c.topbar} data-hidden={showBar ? undefined : ""}>
-        <Link href="/" aria-label="Back to home" className={c.toolBtn}>
-          <ChevronLeft />
-        </Link>
+        <Tooltip>
+          <TooltipTrigger
+            render={
+              <Link href="/" aria-label="Back to home" className={c.toolBtn}>
+                <ChevronLeft />
+              </Link>
+            }
+          />
+          <TooltipContent>Home</TooltipContent>
+        </Tooltip>
 
         <div className={c.titleWrap}>
           <div className={c.title}>{title}</div>
@@ -101,33 +110,48 @@ export function Reader({
               const Icon = m.icon;
               const active = m.id === mode;
               return (
-                <Link
-                  key={m.id}
-                  href={`/read/${bookId}?mode=${m.id}`}
-                  replace
-                  scroll={false}
-                  aria-label={m.label}
-                  title={m.label}
-                  aria-current={active ? "true" : undefined}
-                  className={cn(c.modeBtn, active && c.modeBtnActive)}
-                >
-                  <Icon />
-                </Link>
+                <Tooltip key={m.id}>
+                  <TooltipTrigger
+                    render={
+                      <Link
+                        href={`/read/${bookId}?mode=${m.id}`}
+                        replace
+                        scroll={false}
+                        aria-label={m.label}
+                        aria-current={active ? "true" : undefined}
+                        className={cn(c.modeBtn, active && c.modeBtnActive)}
+                      >
+                        <Icon />
+                      </Link>
+                    }
+                  />
+                  <TooltipContent>{m.label}</TooltipContent>
+                </Tooltip>
               );
             })}
           </div>
 
-          <button
-            type="button"
-            aria-label="Text settings"
-            aria-expanded={showAa}
-            className={cn(c.toolBtn, showAa && c.toolBtnActive)}
-            onClick={() => setShowAa((v) => !v)}
-          >
-            <Type />
-          </button>
+          <Tooltip>
+            <TooltipTrigger
+              render={
+                <button
+                  type="button"
+                  aria-label="Text settings"
+                  aria-expanded={showAa}
+                  className={cn(c.toolBtn, showAa && c.toolBtnActive)}
+                  onClick={() => setShowAa((v) => !v)}
+                >
+                  <Type />
+                </button>
+              }
+            />
+            <TooltipContent>Text settings</TooltipContent>
+          </Tooltip>
 
-          <ThemeToggle className={c.toolBtn} />
+          <Tooltip>
+            <TooltipTrigger render={<ThemeToggle className={c.toolBtn} />} />
+            <TooltipContent>Theme</TooltipContent>
+          </Tooltip>
         </div>
 
         {showAa && (
@@ -142,6 +166,7 @@ export function Reader({
 
       <div className={c.scroll} onScroll={onScroll} onClick={onContentClick}>
         {children}
+        <SelectionPopover />
       </div>
 
       <div

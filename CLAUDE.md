@@ -96,6 +96,14 @@ lines; `toChapters` groups paragraphs under heading-like lines (CHAPTER/PART/BOO
   one chapter at a time with Previous/Next (`?ch=N`).
   Duration/session-based reading was removed. The Aa panel (size/font/leading/background) hides
   its Translation row while books are EN-only.
+  **On-demand EN→VI translation:** select (highlight) text in a paragraph → a floating "Dịch"
+  popup appears → click to translate the selection live via SimplyTranslate, rendered as a block
+  under that paragraph (one slot per paragraph). Same flow on desktop and mobile. Pieces:
+  `translateText` server action (`app/_data/translateAction.ts`, axios, chunks ≤500 chars via
+  `chunkText` in `app/_data/translate.ts`), `TranslationProvider` (per-`pid` store),
+  `TranslatableParagraph`, `SelectionPopover`. Styled via `trans*` keys in `app/classes/reader.ts`.
+  Independent of `hasBilingual` and the dormant `BilingualSentence`/`data-trans` sentence pipeline
+  (still reserved for milestone 2).
 - **Settings (`/settings`)** — local-only prefs UI; default mode segmented control is
   Normal/Chapter (no Sessions, no wpm slider).
 - **Mobile nav** — bottom tab bar (≤`md`) with four equal flat tabs: Home · Library · Read ·

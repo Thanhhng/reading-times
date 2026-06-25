@@ -62,4 +62,17 @@ export const reader = {
   bgSwatch:
     "size-[30px] rounded-[var(--radius-sm)] border-2 border-[var(--border-strong)] transition-shadow",
   bgSwatchActive: "border-accent shadow-[0_0_0_2px_var(--accent-soft)]",
+
+  transPopup:
+    "z-[30] rounded-[var(--radius-pill)] border border-border bg-surface shadow-[var(--shadow-lg)] animate-in fade-in-0 zoom-in-95 duration-150",
+  transPopupBtn:
+    "inline-flex items-center gap-[6px] rounded-[var(--radius-pill)] px-[12px] py-[6px] font-sans text-[length:var(--text-sm)] font-semibold text-accent transition-colors hover:bg-accent-soft [&_svg]:size-[15px]",
+  transBlock:
+    "mb-[1em] border-l-2 border-accent-soft pl-[12px] text-[length:calc(var(--reader-size)*0.95)] italic leading-[var(--lh-normal)] text-accent [font-family:var(--reader-font)]",
+  transLoading:
+    "mb-[1em] border-l-2 border-accent-soft pl-[12px] font-sans text-[length:var(--text-sm)] italic text-muted-foreground",
+  transError:
+    "mb-[1em] border-l-2 border-danger pl-[12px] font-sans text-[length:var(--text-sm)] text-danger",
+  transRetry:
+    "font-semibold text-accent underline underline-offset-2 transition-colors hover:text-accent-hover",
 };

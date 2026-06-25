@@ -1,8 +1,8 @@
 import Link from "next/link";
 import { ChevronLeft, ChevronRight } from "lucide-react";
-import { cn } from "@/lib/utils";
 import { reader as c } from "@/app/classes/reader";
 import type { Chapter } from "@/app/_data/readingText";
+import { TranslatableParagraph } from "./TranslatableParagraph";
 
 export type ReaderMode = "full" | "chapter";
 
@@ -27,9 +27,7 @@ export function ReaderContent({
           {current.title ?? `Chapter ${index}`}
         </div>
         {current.paragraphs.map((paragraph, i) => (
-          <p key={i} className={cn(c.para, c.paraGap)}>
-            {paragraph}
-          </p>
+          <TranslatableParagraph key={i} pid={`${bookId}-${index - 1}-${i}`} text={paragraph} />
         ))}
         <nav className={c.chapterNav} aria-label="Chapters">
           {index > 1 ? (
@@ -68,9 +66,7 @@ export function ReaderContent({
         <section key={i}>
           {ch.title && <div className={c.chapterTitle}>{ch.title}</div>}
           {ch.paragraphs.map((paragraph, j) => (
-            <p key={j} className={cn(c.para, c.paraGap)}>
-              {paragraph}
-            </p>
+            <TranslatableParagraph key={j} pid={`${bookId}-${i}-${j}`} text={paragraph} />
           ))}
         </section>
       ))}
