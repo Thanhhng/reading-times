@@ -21,7 +21,7 @@ function segments(text: string, highlights: Highlight[]) {
 
 export function TranslatableParagraph({ pid, text }: { pid: string; text: string }) {
   const highlights = useHighlights(pid);
-
+  const finalFormatParagraph = text.replaceAll(/[_\-—]/g, "");
   return (
     <>
       <p data-pid={pid} className={cn(c.para, c.paraGap)}>
@@ -35,7 +35,7 @@ export function TranslatableParagraph({ pid, text }: { pid: string; text: string
                 <span key={i}>{seg.text}</span>
               ),
             )
-          : text}
+          : finalFormatParagraph}
       </p>
 
       {highlights && highlights.length > 0 && (
