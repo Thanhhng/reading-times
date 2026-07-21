@@ -3,7 +3,6 @@
 import { useState, type ReactNode } from "react";
 import { Segmented } from "@/components/ui/Segmented";
 import { ThemeSegmented } from "@/components/ui/ThemeSegmented";
-import { Switch } from "@/components/ui/Switch";
 import { settings } from "../classes/settings";
 
 function Group({ title, children }: { title: string; children: ReactNode }) {
@@ -45,22 +44,8 @@ export default function SettingsPage() {
       <div className={settings.head}>
         <h1 className={settings.headTitle}>Settings</h1>
         <p className={settings.headSub}>
-          Your reading preferences. Everything saves locally; sign in to sync
-          across devices.
+          Your reading preferences. Everything saves locally.
         </p>
-      </div>
-
-      <div className={settings.profile}>
-        <span className={settings.avatar}>LP</span>
-        <div className={settings.profileBody}>
-          <div className={settings.pname}>Linh Pham</div>
-          <div className={settings.pmail}>
-            linh@reading.time · signed in with Google
-          </div>
-        </div>
-        <button type="button" className={settings.manageBtn}>
-          Manage account
-        </button>
       </div>
 
       <Group title="Appearance">
@@ -103,29 +88,6 @@ export default function SettingsPage() {
               { value: "chapter", label: "Chapter" },
             ]}
           />
-        </Row>
-      </Group>
-
-      <Group title="Account">
-        <Row
-          label="Sync across devices"
-          hint="Reading position, highlights, vocabulary"
-        >
-          <Switch checked />
-        </Row>
-        <Row label="Connected providers">
-          <div className={settings.providers}>
-            <span className={settings.badge}>
-              <span className={settings.badgeDot} />
-              Google
-            </span>
-            <span className={settings.badge}>GitHub</span>
-          </div>
-        </Row>
-        <Row label="Danger zone" hint="Permanently delete your data">
-          <button type="button" className={settings.dangerBtn}>
-            Delete all data
-          </button>
         </Row>
       </Group>
     </div>

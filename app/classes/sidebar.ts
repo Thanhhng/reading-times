@@ -13,7 +13,6 @@ export const sidebar = {
 
   nav: "flex flex-1 flex-col gap-[3px] overflow-y-auto overflow-x-hidden",
   group: "flex flex-col gap-[3px]",
-  sep: "mx-2 my-2 h-px shrink-0 bg-border",
 
   item: "flex items-center gap-[12px] rounded-[var(--radius-md)] px-[12px] py-[9px] text-[length:var(--text-base)] font-medium text-ink transition-colors hover:bg-surface-2",
   itemActive: "bg-accent-soft text-accent hover:bg-accent-soft",
@@ -21,9 +20,6 @@ export const sidebar = {
   itemIcon: "inline-flex size-[18px] shrink-0 [&>svg]:size-full",
   itemLabel: "min-w-0 flex-1 truncate",
   badge: "rounded-[6px] border border-border bg-surface px-[6px] py-[1px] text-[length:var(--text-2xs)] font-semibold text-muted-foreground",
-  lock: "inline-flex size-[14px] shrink-0 text-faint [&>svg]:size-full",
 
   foot: "flex shrink-0 flex-col gap-2 pt-[var(--space-2)]",
-  signin: "flex items-center gap-2 rounded-[var(--radius-md)] bg-accent px-[14px] py-[11px] font-sans text-[length:var(--text-base)] font-semibold text-accent-ink shadow-[var(--shadow-sm)] transition-colors hover:bg-accent-hover",
-  signinCollapsed: "justify-center px-0",
 };

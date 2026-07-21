@@ -2,10 +2,10 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { ChevronRight, Lock, Settings } from "lucide-react";
+import { Settings } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { sidebar } from "@/app/classes/sidebar";
-import { gatedNav, mainNav, type NavItem } from "@/app/_data/nav";
+import { mainNav, type NavItem } from "@/app/_data/nav";
 
 type SidebarNavProps = {
   collapsed?: boolean;
@@ -43,11 +43,6 @@ function NavLink({
       {!collapsed && item.badge && (
         <span className={sidebar.badge}>{item.badge}</span>
       )}
-      {!collapsed && item.locked && (
-        <span className={sidebar.lock}>
-          <Lock />
-        </span>
-      )}
     </Link>
   );
 }
@@ -60,18 +55,6 @@ export function SidebarNav({ collapsed = false, onNavigate }: SidebarNavProps) {
       <nav className={sidebar.nav}>
         <div className={sidebar.group}>
           {mainNav.map((item) => (
-            <NavLink
-              key={item.href}
-              item={item}
-              collapsed={collapsed}
-              active={pathname === item.href}
-              onNavigate={onNavigate}
-            />
-          ))}
-        </div>
-        <div className={sidebar.sep} />
-        <div className={sidebar.group}>
-          {gatedNav.map((item) => (
             <NavLink
               key={item.href}
               item={item}
@@ -100,14 +83,6 @@ export function SidebarNav({ collapsed = false, onNavigate }: SidebarNavProps) {
           </span>
           {!collapsed && <span className={sidebar.itemLabel}>Settings</span>}
         </Link>
-        <button
-          type="button"
-          title={collapsed ? "Sign in" : undefined}
-          className={cn(sidebar.signin, collapsed && sidebar.signinCollapsed)}
-        >
-          <ChevronRight className="size-[18px] shrink-0" />
-          {!collapsed && <span>Sign in</span>}
-        </button>
       </div>
     </>
   );

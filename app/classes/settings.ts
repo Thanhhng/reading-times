@@ -4,25 +4,12 @@ export const settings = {
   headTitle: "text-[length:var(--text-2xl)]",
   headSub: "mt-[6px] text-[length:var(--text-md)] text-muted-foreground",
 
-  profile: "mb-[var(--space-6)] flex flex-col items-start gap-[var(--space-4)] rounded-[var(--radius-lg)] border border-border bg-surface px-[var(--space-5)] py-[var(--space-4)] shadow-[var(--shadow-sm)] @md/main:flex-row @md/main:items-center",
-  avatar: "flex size-[48px] shrink-0 items-center justify-center rounded-full bg-accent-soft font-serif text-[length:var(--text-lg)] font-semibold text-accent @sm/main:size-[56px]",
-  profileBody: "flex-1",
-  pname: "font-serif text-[length:var(--text-lg)] font-semibold text-ink",
-  pmail: "text-[length:var(--text-sm)] text-muted-foreground",
-
   group: "mb-[var(--space-5)]",
   card: "mt-[10px] overflow-hidden rounded-[var(--radius-lg)] border border-border bg-surface",
   row: "flex flex-col items-start gap-[var(--space-3)] border-b border-border px-[var(--space-5)] py-[var(--space-4)] last:border-b-0 @md/main:flex-row @md/main:items-center @md/main:justify-between @md/main:gap-[var(--space-4)]",
   rowLabel: "flex flex-col gap-[2px]",
   rowLabelTitle: "text-[length:var(--text-base)] font-medium text-ink",
   rowLabelHint: "text-[length:var(--text-xs)] text-muted-foreground",
-
-  providers: "flex gap-2",
-  badge: "inline-flex items-center gap-[5px] rounded-[var(--radius-pill)] border border-border bg-surface-2 px-[10px] py-[3px] text-[length:var(--text-xs)] font-medium text-muted-foreground",
-  badgeDot: "size-[7px] rounded-full bg-accent-2",
-
-  manageBtn: "rounded-[var(--radius-md)] border border-border-strong bg-surface px-[14px] py-[8px] text-[length:var(--text-sm)] font-semibold text-ink transition-colors hover:bg-surface-2",
-  dangerBtn: "rounded-[var(--radius-md)] bg-[var(--danger-soft)] px-[14px] py-[8px] text-[length:var(--text-sm)] font-semibold text-danger transition-colors hover:brightness-95",
 };
 
 export const segmented = {
