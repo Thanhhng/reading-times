@@ -8,6 +8,10 @@ const nextConfig: NextConfig = {
         hostname: "www.gutenberg.org",
         pathname: "/cache/epub/**",
       },
+      {
+        protocol: "https",
+        hostname: "cdn.dummyjson.com",
+      },
     ],
   },
 };
