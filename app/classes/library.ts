@@ -1,5 +1,5 @@
 export const library = {
-  view: "pt-[var(--space-6)] pb-[var(--space-8)] @sm/main:px-[var(--space-6)]",
+  view: "pt-[var(--space-6)] pb-[var(--space-8)] px-[var(--space-4)] md:px-[var(--space-6)]",
   head: "mb-[var(--space-5)]",
   headTitle: "text-[length:var(--text-2xl)]",
   headSub: "mt-[6px] text-[length:var(--text-md)] text-muted-foreground",
