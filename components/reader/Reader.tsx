@@ -8,7 +8,7 @@ import { reader as c } from "@/app/classes/reader";
 import { ThemeToggle } from "@/components/layout/ThemeToggle";
 import { AaPanel, type ReaderPrefs } from "./AaPanel";
 import type { ReaderMode } from "./ReaderContent";
-import { SelectionPopover } from "./SelectionPopover";
+import { SelectionContextMenu } from "./SelectionContextMenu";
 import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip";
 
 const MODES: { id: ReaderMode; label: string; icon: typeof AlignJustify }[] = [
@@ -166,7 +166,7 @@ export function Reader({
 
       <div className={c.scroll} onScroll={onScroll} onClick={onContentClick}>
         {children}
-        <SelectionPopover />
+        <SelectionContextMenu />
       </div>
 
       <div

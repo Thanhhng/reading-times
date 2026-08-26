@@ -84,4 +84,11 @@ export const reader = {
     "block font-sans text-[length:var(--text-sm)] text-danger",
   transRetry:
     "font-semibold text-accent underline underline-offset-2 transition-colors hover:text-accent-hover",
+
+  transMenu:
+    "z-[30] min-w-[168px] overflow-hidden rounded-[var(--radius-md)] border border-border bg-surface py-[4px] shadow-[var(--shadow-lg)] animate-in fade-in-0 zoom-in-95 duration-150",
+  transMenuItem:
+    "flex w-full items-center gap-[8px] px-[14px] py-[9px] text-left font-sans text-[length:var(--text-sm)] font-medium text-ink transition-colors hover:bg-accent-soft [&_svg]:size-[15px] [&_svg]:text-accent",
+  transMenuError:
+    "block px-[14px] py-[9px] font-sans text-[length:var(--text-sm)] text-danger",
 };
