@@ -111,7 +111,7 @@ export default async function BookDetailPage({
                   <Link
                     key={mode.id}
                     href={`/read/${book.id}?mode=${mode.id}`}
-                    className={c.modeBtn}
+                    className={cn(mode.id === "full" ? buttonVariants({ size: "lg" }) : c.modeBtn)}
                   >
                     <Icon />
                     {mode.label}
@@ -119,13 +119,6 @@ export default async function BookDetailPage({
                 );
               })}
             </div>
-            <Link
-              href={`/read/${book.id}`}
-              className={cn(buttonVariants({ size: "lg" }))}
-            >
-              <BookOpen />
-              Read now
-            </Link>
           </div>
         </div>
       </div>
