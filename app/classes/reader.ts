@@ -58,10 +58,6 @@ export const reader = {
     "whitespace-nowrap rounded-[var(--radius-sm)] px-[12px] py-[6px] text-[length:var(--text-sm)] font-medium text-muted-foreground transition-colors hover:text-ink",
   segBtnActive: "bg-surface text-accent font-semibold shadow-[var(--shadow-xs)]",
 
-  bgRow: "flex gap-[8px]",
-  bgSwatch:
-    "size-[30px] rounded-[var(--radius-sm)] border-2 border-[var(--border-strong)] transition-shadow",
-  bgSwatchActive: "border-accent shadow-[0_0_0_2px_var(--accent-soft)]",
 
   transPopup:
     "z-[30] rounded-[var(--radius-pill)] border border-border bg-surface shadow-[var(--shadow-lg)] animate-in fade-in-0 zoom-in-95 duration-150",

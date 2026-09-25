@@ -8,7 +8,6 @@ export type ReaderPrefs = {
   size: number;
   font: "serif" | "sans" | "dyslexic";
   leading: number;
-  bg: "auto" | "light" | "warm" | "dark";
   trans: "hidden" | "on-tap" | "parallel";
 };
 
@@ -29,12 +28,6 @@ const LEADINGS: [number, string][] = [
   [1.5, "Tight"],
   [1.75, "Normal"],
   [2, "Loose"],
-];
-
-const BGS: [Exclude<ReaderPrefs["bg"], "auto">, string][] = [
-  ["light", "#FAF6EE"],
-  ["warm", "#F1E7CF"],
-  ["dark", "#17161B"],
 ];
 
 const TRANSLATIONS: [ReaderPrefs["trans"], string][] = [
@@ -104,23 +97,6 @@ export function AaPanel({ prefs, setPref, showTranslation = true, onClose }: Pro
             >
               {label}
             </button>
-          ))}
-        </div>
-      </div>
-
-      <div className={c.aaRow}>
-        <span className={c.aaLabel}>Background</span>
-        <div className={c.bgRow}>
-          {BGS.map(([value, color]) => (
-            <button
-              key={value}
-              type="button"
-              aria-label={value}
-              aria-pressed={prefs.bg === value}
-              className={cn(c.bgSwatch, prefs.bg === value && c.bgSwatchActive)}
-              style={{ background: color }}
-              onClick={() => setPref("bg", value)}
-            />
           ))}
         </div>
       </div>

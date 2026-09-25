@@ -39,7 +39,7 @@ product, data, and design all live here.
   ThemeToggle.
 - `components/home/*` — ReelCard (static sample reading screen in the home hero).
 - `components/brand/*` — logo / illustrations as React.
-- `app/globals.css` — design tokens (`:root` light, `.dark` dark, reader-bg variants) + base styles.
+- `app/globals.css` — design tokens (`:root` light, `.dark` dark; the reader's `--reader-*` follow the theme) + base styles.
 - `app/design/**` — **reference only**: design-system recreations and the UI kit
   (`app/design/ui_kits/reading-time/` is the de-facto product spec — LibraryView, ReaderView,
   HomeView, SettingsView JSX). Mine for intended visuals; never import from it.
@@ -100,7 +100,8 @@ lines; `toChapters` groups paragraphs under heading-like lines (CHAPTER/PART/BOO
 - **Reader (`/read/[bookId]?mode=&ch=`)** — numeric Gutenberg id. Two modes, **`full`
   ("Normal reading") is the default**: `full` = whole book with chapter headings, `chapter` =
   one chapter at a time with Previous/Next (`?ch=N`).
-  Duration/session-based reading was removed. The Aa panel (size/font/leading/background) hides
+  Duration/session-based reading was removed. The Aa panel (size/font/leading — no background picker; the reader follows the app
+  light/dark theme) hides
   its Translation row while books are EN-only.
   **On-demand EN→VI translation:** select (highlight) text in a paragraph → a floating "Dịch"
   popup appears → click to translate the selection live via SimplyTranslate, rendered as a block

@@ -190,22 +190,6 @@
   --scrim: rgba(0, 0, 0, 0.58);
 }
 
-[data-reader-bg="warm"] {
-  --reader-bg: #F1E7CF;
-  --reader-text: #3A3326;
-  --reader-rule: #DCCFAE;
-}
-[data-reader-bg="light"] {
-  --reader-bg: #FAF6EE;
-  --reader-text: #2C2A26;
-  --reader-rule: #E4DCCB;
-}
-[data-reader-bg="dark"] {
-  --reader-bg: #17161B;
-  --reader-text: #E9E3D7;
-  --reader-rule: #322E38;
-}
-
 @theme inline {
   --color-page: var(--bg);
   --color-surface: var(--surface);

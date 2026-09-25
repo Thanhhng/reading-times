@@ -39,7 +39,6 @@ export function Reader({
     size: 19,
     font: "serif",
     leading: 1.75,
-    bg: "auto",
     trans: hasBilingual ? "on-tap" : "hidden",
   });
   const setPref = <K extends keyof ReaderPrefs>(key: K, value: ReaderPrefs[K]) =>
@@ -84,7 +83,6 @@ export function Reader({
   return (
     <div
       className={c.shell}
-      data-reader-bg={prefs.bg === "auto" ? undefined : prefs.bg}
       data-trans={prefs.trans}
       style={shellStyle}
     >
