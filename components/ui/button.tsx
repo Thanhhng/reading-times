@@ -10,14 +10,14 @@ const buttonVariants = cva(
     variants: {
       variant: {
         default:
-          "bg-primary text-primary-foreground shadow-[var(--shadow-sm)] hover:bg-accent-hover",
+          "bg-primary text-primary-foreground hover:text-blue-500 shadow-[var(--shadow-sm)] hover:bg-accent-hover",
         outline: "border-border bg-surface text-ink hover:bg-surface-2",
         secondary:
           "bg-surface-2 text-ink hover:bg-[color-mix(in_oklch,var(--surface-2),var(--text)_6%)]",
         ghost: "text-ink hover:bg-surface-2",
         destructive:
           "bg-destructive text-white shadow-[var(--shadow-sm)] hover:bg-destructive/90",
-        link: "text-accent-2 underline-offset-4 hover:text-accent hover:underline",
+        link: "text-accent-2 bg-blue-500 underline-offset-4 hover:text-accent hover:underline",
       },
       size: {
         sm: "h-8 px-3 text-[length:var(--text-sm)] [&_svg:not([class*='size-'])]:size-4",

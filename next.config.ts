@@ -6,7 +6,6 @@ const nextConfig: NextConfig = {
       {
         protocol: "https",
         hostname: "www.gutenberg.org",
-        pathname: "/cache/epub/**",
       },
       {
         protocol: "https",
