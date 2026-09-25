@@ -3,9 +3,8 @@ import { Fraunces, Literata, Be_Vietnam_Pro } from "next/font/google";
 import "./globals.css";
 import { cn } from "@/lib/utils";
 import { ThemeProvider } from "@/components/theme-provider";
-import { SidebarProvider } from "@/components/ui/sidebar";
 import { TooltipProvider } from "@/components/ui/tooltip";
-import { DesktopSidebar } from "@/components/layout/DesktopSidebar";
+import { TopNav } from "@/components/layout/TopNav";
 import { MobileTopBar } from "@/components/layout/MobileTopBar";
 import { MobileBottomNav } from "@/components/layout/MobileBottomNav";
 import { fetchBooks, readableBooks } from "@/app/_data/gutendex";
@@ -63,16 +62,14 @@ export default async function RootLayout({
             enableSystem
             disableTransitionOnChange
           >
-            <SidebarProvider>
-              <DesktopSidebar />
-              <div className="flex min-w-0 flex-1 flex-col">
-                <MobileTopBar />
-                <main className="flex min-w-0 flex-1 flex-col bg-background pb-[calc(var(--space-8)+env(safe-area-inset-bottom,0))] @container/main md:pb-0">
-                  {children}
-                </main>
-              </div>
-              <MobileBottomNav readHref={readHref} />
-            </SidebarProvider>
+            <div className="flex min-h-svh w-full min-w-0 flex-col">
+              <TopNav />
+              <MobileTopBar />
+              <main className="flex min-w-0 flex-1 flex-col bg-background pb-[calc(var(--space-8)+env(safe-area-inset-bottom,0))] @container/main md:pb-0">
+                {children}
+              </main>
+            </div>
+            <MobileBottomNav readHref={readHref} />
           </ThemeProvider>
         </TooltipProvider>
       </body>

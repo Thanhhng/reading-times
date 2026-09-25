@@ -18,14 +18,15 @@ product, data, and design all live here.
 
 - `app/` — routes: `/` (home), `/library`, `/library/[bookId]` (book detail), `/read/[bookId]`
   (reader), `/settings`.
-- `app/classes/*.ts` — **Tailwind class objects** (`ui`, `library`, `home`, `reader`, `sidebar`,
+- `app/classes/*.ts` — **Tailwind class objects** (`ui`, `library`, `home`, `reader`, `topNav`,
   `bottomNav`, `mobileBar`, `settings`). Components import these instead of inlining
   long class strings. This is the house pattern — follow it.
 - `app/_data/*.ts` — data layer, all live (no fixtures):
   - `gutendex.ts` — types + mappers + `fetchBooks` / `fetchBook` against the self-host.
   - `readingText.ts` — fetches a book's plain text, strips Gutenberg boilerplate, splits into
     paragraphs/chapters.
-  - `nav.ts` — sidebar + bottom-nav items (static, no book data).
+  - `nav.ts` — top-nav + bottom-nav items (static, no book data).
+  - `homeReel.ts` — static sample copy for the home hero's reel preview card.
 - `components/ui/*` — production primitives: BookCard, BookCardSkeleton, BookGridSkeleton,
   GenreChip, Badge, Tag, Avatar, IconButton, ProgressBar, Segmented, Switch, ThemeSegmented,
   button, input, separator, sheet, sidebar, skeleton, tooltip.
@@ -34,7 +35,9 @@ product, data, and design all live here.
 - `components/reader/*` — Reader (client shell: top bar, Aa panel, progress rail),
   ReaderContent (server, renders chapters/paragraphs), AaPanel, BilingualSentence (kept for the
   future bilingual milestone; currently unused).
-- `components/layout/*` — DesktopSidebar, MobileTopBar, MobileBottomNav, ThemeToggle.
+- `components/layout/*` — TopNav (desktop, hidden on `/read`), MobileTopBar, MobileBottomNav,
+  ThemeToggle.
+- `components/home/*` — ReelCard (static sample reading screen in the home hero).
 - `components/brand/*` — logo / illustrations as React.
 - `app/globals.css` — design tokens (`:root` light, `.dark` dark, reader-bg variants) + base styles.
 - `app/design/**` — **reference only**: design-system recreations and the UI kit
@@ -66,7 +69,8 @@ Types and mappers:
   `LibraryBook[]`. Every surface uses this.
 - Author/translator names are flipped `"Last, First"` → `"First Last"` with parentheticals removed.
 
-**Contract:** every surface runs on real self-host data — there are no hardcoded book fixtures.
+**Contract:** every surface runs on real self-host data — there are no hardcoded book fixtures
+(the one exception is the illustrative home reel card sample in `homeReel.ts`).
 `hasBilingual` is always `false` until a Vietnamese translation pipeline exists (the reader is
 EN-only and hides translation UI).
 
@@ -78,8 +82,10 @@ lines; `toChapters` groups paragraphs under heading-like lines (CHAPTER/PART/BOO
 
 ## Pages
 
-- **Home (`/`)** — hero with "Start reading" (most popular book) + two rails ("Popular now",
-  "Recently added") from `readableBooks(fetchBooks(...))`. Cards link to `/library/{id}`.
+- **Home (`/`)** — editorial hero (giant Fraunces headline, "Start today's reel" → most popular
+  book, static `ReelCard` preview), a masthead strip (date · EN → VI · free · live book count), and
+  two 6-book rails ("Popular now", "Recently added") from `readableBooks(fetchBooks(...))` using
+  `BookCard variant="plain"`. Cards link to `/library/{id}`.
   No continue-reading card yet — needs reading-progress persistence (future milestone).
 - **Library (`/library`)** — server-rendered grid + **filter bar built from `Link` toggles**:
   multi-select genres (OR within group, derived from the current page's results, narrowed
@@ -106,6 +112,8 @@ lines; `toChapters` groups paragraphs under heading-like lines (CHAPTER/PART/BOO
   (still reserved for milestone 2).
 - **Settings (`/settings`)** — local-only prefs UI; default mode segmented control is
   Normal/Chapter (no Sessions, no wpm slider).
+- **Desktop nav** — sticky top navbar (brand · Home/Library/Categories · Settings gear · light/dark
+  toggle). Replaced the old left sidebar; hidden on `/read/*` (the reader has its own top bar).
 - **Mobile nav** — bottom tab bar (≤`md`) with four equal flat tabs: Home · Library · Read ·
   Profile. No raised primary pill; active tab = accent-soft pill + accent text. "Read" jumps into
   the most popular book in normal reading (href computed in `app/layout.tsx` from real data,

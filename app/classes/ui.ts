@@ -46,6 +46,13 @@ export const bookCard = {
     "line-clamp-2 font-serif text-[length:var(--text-md)] font-semibold leading-[1.2] tracking-[-0.01em] text-ink",
   author: "text-[length:var(--text-sm)] text-muted-foreground",
   chips: "mt-[2px] flex flex-wrap gap-[6px]",
+  plainRoot: "group flex h-full w-full flex-col text-left",
+  plainCover:
+    "rounded-[var(--radius-sm)] shadow-[var(--shadow-md)] transition-[transform,box-shadow] duration-[var(--dur-base)] ease-[var(--ease-out)] group-hover:-translate-y-1 group-hover:shadow-[var(--shadow-hover)]",
+  plainBody: "flex flex-col gap-[4px] pt-[var(--space-3)]",
+  plainTitle:
+    "line-clamp-2 font-serif text-[length:var(--text-md)] font-semibold leading-[1.25] tracking-[-0.01em] text-ink",
+  plainAuthor: "font-read text-[length:var(--text-sm)] text-muted-foreground",
 };
 
 export const chip = {

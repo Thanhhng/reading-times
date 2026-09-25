@@ -1,5 +1,6 @@
 import type { CSSProperties } from "react";
 import Image from "next/image";
+import { cn } from "@/lib/utils";
 import { bookCard } from "@/app/classes/ui";
 import { GenreChip } from "./GenreChip";
 
@@ -9,6 +10,7 @@ export type BookCardProps = {
   genres?: string[];
   cover?: string | null;
   hasBilingual?: boolean;
+  variant?: "card" | "plain";
 };
 
 const COVERS: [string, string][] = [
@@ -34,12 +36,17 @@ export function BookCard({
   genres = [],
   cover = null,
   hasBilingual = false,
+  variant = "card",
 }: BookCardProps) {
+  const plain = variant === "plain";
   const [c1, ct] = coverFor(title);
   const coverStyle = { "--_c1": c1, "--_ct": ct } as CSSProperties;
   return (
-    <article className={bookCard.root} style={coverStyle}>
-      <div className={bookCard.cover}>
+    <article
+      className={plain ? bookCard.plainRoot : bookCard.root}
+      style={coverStyle}
+    >
+      <div className={cn(bookCard.cover, plain && bookCard.plainCover)}>
         {cover && (
           <Image
             className={bookCard.coverImg}
@@ -62,10 +69,14 @@ export function BookCard({
           </>
         )}
       </div>
-      <div className={bookCard.body}>
-        <h3 className={bookCard.title}>{title}</h3>
-        {author && <p className={bookCard.author}>{author}</p>}
-        {genres.length > 0 && (
+      <div className={plain ? bookCard.plainBody : bookCard.body}>
+        <h3 className={plain ? bookCard.plainTitle : bookCard.title}>{title}</h3>
+        {author && (
+          <p className={plain ? bookCard.plainAuthor : bookCard.author}>
+            {author}
+          </p>
+        )}
+        {!plain && genres.length > 0 && (
           <div className={bookCard.chips}>
             {genres.slice(0, 3).map((genre) => (
               <GenreChip key={genre} label={genre} />

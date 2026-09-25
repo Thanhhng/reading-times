@@ -1,11 +1,9 @@
 import type { LucideIcon } from "lucide-react";
-import { Home, Library, Search, Tag, BookOpen, User } from "lucide-react";
+import { Home, Library, BookOpen, User } from "lucide-react";
 
 export type NavItem = {
   title: string;
   href: string;
-  icon: LucideIcon;
-  badge?: string;
 };
 
 export type BottomNavTab = {
@@ -15,11 +13,10 @@ export type BottomNavTab = {
   icon: LucideIcon;
 };
 
-export const mainNav: NavItem[] = [
-  { title: "Home", href: "/", icon: Home },
-  { title: "Library", href: "/library", icon: Library },
-  { title: "Search", href: "/search", icon: Search, badge: "⌘K" },
-  { title: "Categories", href: "/categories", icon: Tag },
+export const topNav: NavItem[] = [
+  { title: "Home", href: "/" },
+  { title: "Library", href: "/library" },
+  { title: "Categories", href: "/categories" },
 ];
 
 export const bottomNavTabs: BottomNavTab[] = [

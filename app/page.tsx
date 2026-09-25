@@ -1,11 +1,18 @@
 import Link from "next/link";
-import { BookOpen } from "lucide-react";
+import { ArrowRight, Play, TextCursor } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { buttonVariants } from "@/components/ui/button";
 import { BookCard } from "@/components/ui/BookCard";
-import { HeroArt } from "@/components/brand/HeroArt";
+import { ReelCard } from "@/components/home/ReelCard";
 import { fetchBooks, readableBooks, type LibraryBook } from "./_data/gutendex";
 import { home } from "./classes/home";
+
+const today = new Intl.DateTimeFormat("en-GB", {
+  weekday: "long",
+  day: "numeric",
+  month: "long",
+  year: "numeric",
+});
 
 function Rail({
   title,
@@ -23,6 +30,7 @@ function Rail({
         <h2 className={home.railTitle}>{title}</h2>
         <Link href={href} className={home.railSeeAll}>
           See all
+          <ArrowRight aria-hidden="true" />
         </Link>
       </div>
       <div className={home.railScroll}>
@@ -30,9 +38,9 @@ function Rail({
           <Link
             key={book.id}
             href={`/library/${book.id}`}
-            className="block min-w-0"
+            className={home.railItem}
           >
-            <BookCard {...book} />
+            <BookCard {...book} variant="plain" />
           </Link>
         ))}
       </div>
@@ -45,16 +53,20 @@ export default async function HomePage() {
     fetchBooks({ sort: "popular" }),
     fetchBooks({ sort: "descending" }),
   ]);
-  const popular = readableBooks(popularData).slice(0, 10);
-  const newest = readableBooks(newestData).slice(0, 10);
+  const popular = readableBooks(popularData).slice(0, 6);
+  const newest = readableBooks(newestData).slice(0, 6);
   const featured = popular[0];
+  const total = popularData?.count;
 
   return (
     <div className={home.view}>
       <section className={home.hero}>
         <div className="min-w-0">
-          <div className={home.heroEyebrow}>Reels for reading</div>
-          <h1 className={home.heroTitle}>Turn wasted time into wonderful time.</h1>
+          <h1 className={home.heroTitle}>
+            Turn wasted time
+            <br />
+            into wonderful time.
+          </h1>
           <p className={home.heroText}>
             A bilingual library you scroll through — read to learn a language,
             one calm screen at a time.
@@ -62,23 +74,29 @@ export default async function HomePage() {
           <div className={home.heroCta}>
             <Link
               href={featured ? `/read/${featured.id}` : "/library"}
-              className={cn(buttonVariants({ size: "lg" }))}
+              className={cn(buttonVariants({ size: "lg" }), home.heroPrimary)}
             >
-              <BookOpen />
-              Start reading
+              <Play />
+              Start today’s reel
             </Link>
-            <Link
-              href="/library"
-              className={cn(buttonVariants({ variant: "ghost", size: "lg" }))}
-            >
+            <Link href="/library" className={home.heroLink}>
               Browse the library
             </Link>
           </div>
+          <p className={home.heroHint}>
+            <TextCursor aria-hidden="true" />
+            Select any sentence to see it in Vietnamese.
+          </p>
         </div>
-        <div className={home.heroArt}>
-          <HeroArt className="h-auto w-full max-w-[300px]" />
-        </div>
+        <ReelCard />
       </section>
+
+      <div className={home.masthead}>
+        <span>{today.format(new Date())}</span>
+        <span>English → Tiếng Việt</span>
+        <span>Public-domain classics, free</span>
+        {total ? <span>{total.toLocaleString("en-US")} books</span> : null}
+      </div>
 
       <Rail title="Popular now" href="/library" books={popular} />
       <Rail
