@@ -42,18 +42,6 @@ export function toChapters(paragraphs: string[]): Chapter[] {
   return chapters;
 }
 
-export function countWords(chapters: Chapter[]): number {
-  return chapters.reduce(
-    (sum, chapter) =>
-      sum +
-      chapter.paragraphs.reduce(
-        (inner, paragraph) => inner + paragraph.split(" ").length,
-        0,
-      ),
-    0,
-  );
-}
-
 export async function fetchReadingText(url: string): Promise<string | null> {
   try {
     const res = await fetch(url, {

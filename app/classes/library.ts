@@ -7,7 +7,6 @@ export const library = {
   empty: "flex flex-col items-center gap-[var(--space-3)] py-[var(--space-8)] text-center text-[length:var(--text-md)] text-muted-foreground",
   count: "mb-[var(--space-3)] text-[length:var(--text-sm)] text-muted-foreground",
   pager: "mt-[var(--space-6)] flex items-center justify-center gap-[var(--space-3)]",
-  pagerInfo: "text-[length:var(--text-sm)] tabular-nums text-muted-foreground",
 };
 
 export const filterBar = {
@@ -53,7 +52,6 @@ export const bookPage = {
   modeGrid: "grid grid-cols-1 gap-[10px] @sm/main:grid-cols-2",
   modeBtn:
     "flex items-center gap-[10px] rounded-[var(--radius-md)] border border-border bg-surface px-[14px] py-[12px] text-[length:var(--text-sm)] font-medium text-ink transition-colors hover:border-[var(--border-strong)] hover:bg-surface-2 [&_svg]:size-[18px] [&_svg]:text-accent",
-  cta: "flex flex-wrap items-center gap-[var(--space-3)]",
 };
 
 export const bookCardSkeleton = {

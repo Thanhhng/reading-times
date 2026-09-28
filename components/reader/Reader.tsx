@@ -8,7 +8,6 @@ import { reader as c } from "@/app/classes/reader";
 import { ThemeToggle } from "@/components/layout/ThemeToggle";
 import { AaPanel, type ReaderPrefs } from "./AaPanel";
 import type { ReaderMode } from "./ReaderContent";
-import { SelectionContextMenu } from "./SelectionContextMenu";
 import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip";
 
 const MODES: { id: ReaderMode; label: string; icon: typeof AlignJustify }[] = [
@@ -26,20 +25,17 @@ export function Reader({
   bookId,
   title,
   mode,
-  hasBilingual = false,
   children,
 }: {
   bookId: number | string;
   title: string;
   mode: ReaderMode;
-  hasBilingual?: boolean;
   children: ReactNode;
 }) {
   const [prefs, setPrefs] = useState<ReaderPrefs>({
     size: 19,
     font: "serif",
     leading: 1.75,
-    trans: hasBilingual ? "on-tap" : "hidden",
   });
   const setPref = <K extends keyof ReaderPrefs>(key: K, value: ReaderPrefs[K]) =>
     setPrefs((prev) => ({ ...prev, [key]: value }));
@@ -68,12 +64,6 @@ export function Reader({
     lastY.current = y;
   };
 
-  const onContentClick = (event: React.MouseEvent<HTMLDivElement>) => {
-    if (prefs.trans !== "on-tap") return;
-    const sentence = (event.target as HTMLElement).closest("[data-sent]");
-    if (sentence) sentence.toggleAttribute("data-open");
-  };
-
   const shellStyle = {
     "--reader-font": FONT_VAR[prefs.font],
     "--reader-size": `${prefs.size}px`,
@@ -81,11 +71,7 @@ export function Reader({
   } as CSSProperties;
 
   return (
-    <div
-      className={c.shell}
-      data-trans={prefs.trans}
-      style={shellStyle}
-    >
+    <div className={c.shell} style={shellStyle}>
       <div className={c.topbar} data-hidden={showBar ? undefined : ""}>
         <Tooltip>
           <TooltipTrigger
@@ -153,18 +139,12 @@ export function Reader({
         </div>
 
         {showAa && (
-          <AaPanel
-            prefs={prefs}
-            setPref={setPref}
-            showTranslation={hasBilingual}
-            onClose={() => setShowAa(false)}
-          />
+          <AaPanel prefs={prefs} setPref={setPref} onClose={() => setShowAa(false)} />
         )}
       </div>
 
-      <div className={c.scroll} onScroll={onScroll} onClick={onContentClick}>
+      <div className={c.scroll} onScroll={onScroll}>
         {children}
-        <SelectionContextMenu />
       </div>
 
       <div

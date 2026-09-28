@@ -17,7 +17,6 @@ function toFilters(sp: SP): LibraryFilters {
   return {
     genres: all(sp.genre),
     languages: languages ? languages.split(",") : [],
-    bilingual: first(sp.bilingual) === "1",
     search: first(sp.search) || undefined,
     topic: first(sp.topic) || undefined,
     sort:

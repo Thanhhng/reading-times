@@ -10,8 +10,6 @@ export const home = {
   heroPrimary: "text-accent-ink! hover:text-accent-ink!",
   heroLink:
     "rounded-[var(--radius-sm)] font-serif text-[length:var(--text-md)] font-semibold text-accent! underline-offset-4 transition-colors hover:text-accent-hover! hover:underline",
-  heroHint:
-    "mt-[var(--space-5)]! flex items-center gap-[8px] font-read text-[length:var(--text-base)] text-muted-foreground [&_svg]:size-4 [&_svg]:shrink-0 [&_svg]:text-accent",
 
   reel: "relative mx-auto w-full max-w-[26rem] rounded-[var(--radius-xl)] border border-border bg-surface p-[var(--space-5)] shadow-[var(--shadow-xl)] @sm/main:p-[var(--space-6)]",
   reelMeta:

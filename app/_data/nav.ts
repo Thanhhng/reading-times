@@ -16,7 +16,7 @@ export type BottomNavTab = {
 export const topNav: NavItem[] = [
   { title: "Home", href: "/" },
   { title: "Library", href: "/library" },
-  { title: "Categories", href: "/categories" },
+  { title: "Search", href: "/search" },
 ];
 
 export const bottomNavTabs: BottomNavTab[] = [

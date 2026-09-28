@@ -7,10 +7,6 @@ const nextConfig: NextConfig = {
         protocol: "https",
         hostname: "www.gutenberg.org",
       },
-      {
-        protocol: "https",
-        hostname: "cdn.dummyjson.com",
-      },
     ],
   },
 };

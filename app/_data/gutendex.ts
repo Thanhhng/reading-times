@@ -85,7 +85,6 @@ export function toBookCardProps(book: GutendexBook): BookCardProps {
     author: book.authors[0] ? flipName(book.authors[0].name) : undefined,
     genres: deriveGenres(book),
     cover: book.formats["image/jpeg"] ?? null,
-    hasBilingual: false,
   };
 }
 

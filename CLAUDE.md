@@ -17,9 +17,9 @@ product, data, and design all live here.
 ## Repo structure
 
 - `app/` — routes: `/` (home), `/library`, `/library/[bookId]` (book detail), `/read/[bookId]`
-  (reader), `/settings`.
+  (reader), `/search`, `/settings`.
 - `app/classes/*.ts` — **Tailwind class objects** (`ui`, `library`, `home`, `reader`, `topNav`,
-  `bottomNav`, `mobileBar`, `settings`). Components import these instead of inlining
+  `bottomNav`, `mobileBar`, `settings`, `search`). Components import these instead of inlining
   long class strings. This is the house pattern — follow it.
 - `app/_data/*.ts` — data layer, all live (no fixtures):
   - `gutendex.ts` — types + mappers + `fetchBooks` / `fetchBook` against the self-host.
@@ -28,17 +28,18 @@ product, data, and design all live here.
   - `nav.ts` — top-nav + bottom-nav items (static, no book data).
   - `homeReel.ts` — static sample copy for the home hero's reel preview card.
 - `components/ui/*` — production primitives: BookCard, BookCardSkeleton, BookGridSkeleton,
-  GenreChip, Badge, Tag, Avatar, IconButton, ProgressBar, Segmented, Switch, ThemeSegmented,
-  button, input, separator, sheet, sidebar, skeleton, tooltip.
+  GenreChip, Badge, ThemeSegmented, button, input, tooltip. Add new primitives only when a
+  surface actually uses them.
 - `components/library/*` — BookGrid (server, fetch + grid), FilterBar (server, link-based
   toggles), LibraryReload (client refresh button).
 - `components/reader/*` — Reader (client shell: top bar, Aa panel, progress rail),
-  ReaderContent (server, renders chapters/paragraphs), AaPanel, BilingualSentence (kept for the
-  future bilingual milestone; currently unused).
+  ReaderContent (server, renders chapters/paragraphs), Paragraph (server `<p>`, strips Gutenberg
+  `_italic_` underscores), AaPanel.
+- `components/search/*` — SearchForm (GET form → `/search?search=`), SearchResults (server fetch).
 - `components/layout/*` — TopNav (desktop, hidden on `/read`), MobileTopBar, MobileBottomNav,
   ThemeToggle.
 - `components/home/*` — ReelCard (static sample reading screen in the home hero).
-- `components/brand/*` — logo / illustrations as React.
+- `components/brand/*` — BrandGlyph (logo as React).
 - `app/globals.css` — design tokens (`:root` light, `.dark` dark; the reader's `--reader-*` follow the theme) + base styles.
 - `app/design/**` — **reference only**: design-system recreations and the UI kit
   (`app/design/ui_kits/reading-time/` is the de-facto product spec — LibraryView, ReaderView,
@@ -70,9 +71,8 @@ Types and mappers:
 - Author/translator names are flipped `"Last, First"` → `"First Last"` with parentheticals removed.
 
 **Contract:** every surface runs on real self-host data — there are no hardcoded book fixtures
-(the one exception is the illustrative home reel card sample in `homeReel.ts`).
-`hasBilingual` is always `false` until a Vietnamese translation pipeline exists (the reader is
-EN-only and hides translation UI).
+(the one exception is the illustrative home reel card sample in `homeReel.ts`). The app is
+EN-only for now: there is no translation code or bilingual flag in the model.
 
 ## Reading text (`app/_data/readingText.ts`)
 
@@ -89,31 +89,25 @@ lines; `toChapters` groups paragraphs under heading-like lines (CHAPTER/PART/BOO
   No continue-reading card yet — needs reading-progress persistence (future milestone).
 - **Library (`/library`)** — server-rendered grid + **filter bar built from `Link` toggles**:
   multi-select genres (OR within group, derived from the current page's results, narrowed
-  client-side against `deriveGenres` output), language tags + sort + "EN ↔ VI" (API params),
-  AND across groups. All state lives in the query string (`genre` repeated, `languages` comma
-  list, `sort`, `bilingual=1`, `page`). Prev/Next pagination from `count`/`next`/`previous`.
+  client-side against `deriveGenres` output), language tags + sort (API params), AND across
+  groups. All state lives in the query string (`genre` repeated, `languages` comma list, `sort`,
+  `page`). Prev/Next pagination from `count`/`next`/`previous`.
 - **Book detail (`/library/[bookId]`)** — a routed page (the newest design replaced the old
   slide-over): cover (real image or warm spine fallback via `coverFor`), genre badges, stats
   (downloads · language · public domain), Gutendex summary, "Translated by …" when non-empty,
-  reading-mode launcher, and "Read now" → `/read/{id}`. Words/est-minutes are intentionally
+  and a reading-mode launcher (Normal reading / Chapter → `/read/{id}?mode=`). Words/est-minutes are intentionally
   omitted (not in Gutendex; don't fetch full text for a grid stat).
 - **Reader (`/read/[bookId]?mode=&ch=`)** — numeric Gutenberg id. Two modes, **`full`
   ("Normal reading") is the default**: `full` = whole book with chapter headings, `chapter` =
   one chapter at a time with Previous/Next (`?ch=N`).
-  Duration/session-based reading was removed. The Aa panel (size/font/leading — no background picker; the reader follows the app
-  light/dark theme) hides
-  its Translation row while books are EN-only.
-  **On-demand EN→VI translation:** select (highlight) text in a paragraph → a floating "Dịch"
-  popup appears → click to translate the selection live via SimplyTranslate, rendered as a block
-  under that paragraph (one slot per paragraph). Same flow on desktop and mobile. Pieces:
-  `translateText` server action (`app/_data/translateAction.ts`, axios, chunks ≤500 chars via
-  `chunkText` in `app/_data/translate.ts`), `TranslationProvider` (per-`pid` store),
-  `TranslatableParagraph`, `SelectionPopover`. Styled via `trans*` keys in `app/classes/reader.ts`.
-  Independent of `hasBilingual` and the dormant `BilingualSentence`/`data-trans` sentence pipeline
-  (still reserved for milestone 2).
-- **Settings (`/settings`)** — local-only prefs UI; default mode segmented control is
-  Normal/Chapter (no Sessions, no wpm slider).
-- **Desktop nav** — sticky top navbar (brand · Home/Library/Categories · Settings gear · light/dark
+  Duration/session-based reading was removed. The Aa panel has size / font / line height only;
+  the reader follows the app light/dark theme. Native right-click works (nothing intercepts
+  `contextmenu`). On-demand translation was removed (it will be rebuilt as milestone 2).
+- **Search (`/search?search=&page=`)** — `SearchResults` → `fetchBooks({ search, page })`; linked
+  from the desktop TopNav and the mobile top bar.
+- **Settings (`/settings`)** — server page with one real control: Theme (`ThemeSegmented`,
+  next-themes). Nothing else is persisted yet.
+- **Desktop nav** — sticky top navbar (brand · Home/Library/Search · Settings gear · light/dark
   toggle). Replaced the old left sidebar; hidden on `/read/*` (the reader has its own top bar).
 - **Mobile nav** — bottom tab bar (≤`md`) with four equal flat tabs: Home · Library · Read ·
   Profile. No raised primary pill; active tab = accent-soft pill + accent text. "Read" jumps into
@@ -127,7 +121,7 @@ lines; `toChapters` groups paragraphs under heading-like lines (CHAPTER/PART/BOO
 - Fonts: **Fraunces** (display/serif), **Literata** (reading), **Be Vietnam Pro** (UI) — loaded in
   `app/layout.tsx` via `next/font`, all cover Vietnamese diacritics. Never Inter/Roboto/Arial.
 - Accent terracotta `#C4663A` (amber `#E0905C` in dark), used sparingly (primary CTA, active nav).
-  Secondary accent teal for bilingual badges. Warm soft shadows, 12–16px radii.
+  Secondary accent teal (`accent-2`) for the bilingual/VI panels. Warm soft shadows, 12–16px radii.
 - Tone: sentence case, second-person, no hype. Vietnamese copy is fine in UI; bilingual word-pairs
   use the `↔` glyph.
 - Use design tokens via the exposed Tailwind utilities (`bg-surface`, `bg-surface-2`, `text-ink`,
@@ -138,14 +132,14 @@ lines; `toChapters` groups paragraphs under heading-like lines (CHAPTER/PART/BOO
   required.
 - BookCard: real cover via `next/image` when `cover` is set, otherwise a deterministic warm-color
   spine (6-colour palette keyed off the title, `coverFor(title)`). Genre chips capped at 3.
-  "EN · VI" badge only when `hasBilingual`.
+  `variant="plain"` (home rails) drops the card chrome and chips.
 
 ## Milestones (remaining)
 
 1. **Reading-progress persistence** — continue-reading card on home, real "Read" tab resume,
    progress on book detail.
-2. **Bilingual EN ↔ VI pipeline** — sentence-aligned translations; re-enable `hasBilingual`, the
-   reader's Translation modes, and `BilingualSentence`.
-3. **Search & categories** — wire the sidebar search (`/search`) and categories (`/categories`)
-   routes to `fetchBooks({ search, topic })`.
+2. **Bilingual EN ↔ VI pipeline** — rebuild from scratch with a reliable translator (DeepL /
+   Google Cloud / self-hosted LibreTranslate; the free Google `gtx` endpoint 429s quickly).
+   The old select-to-translate code is in git history (e.g. commit `ce2a4c0`).
+3. **Categories** — a `/categories` route on `fetchBooks({ topic })` (the old mock page was removed).
 4. **Reader stats** — words / est-minutes derived from fetched text length for the reader header.

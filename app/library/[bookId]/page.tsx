@@ -2,7 +2,7 @@ import type { CSSProperties } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { notFound } from "next/navigation";
-import { AlignJustify, BookOpen, ChevronLeft, List } from "lucide-react";
+import { AlignJustify, ChevronLeft, List } from "lucide-react";
 import { fetchBook } from "@/app/_data/gutendex";
 import { bookPage as c } from "@/app/classes/library";
 import { Badge } from "@/components/ui/Badge";
@@ -66,15 +66,8 @@ export default async function BookDetailPage({
             {book.author && <p className={c.author}>{book.author}</p>}
             <div className={c.badges}>
               {book.genres?.map((genre) => (
-                <Badge key={genre} tone="accent">
-                  {genre}
-                </Badge>
+                <Badge key={genre}>{genre}</Badge>
               ))}
-              {book.hasBilingual && (
-                <Badge tone="teal" dot>
-                  EN · VI
-                </Badge>
-              )}
             </div>
           </header>
 

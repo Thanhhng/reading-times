@@ -9,7 +9,6 @@ export type BookCardProps = {
   author?: string;
   genres?: string[];
   cover?: string | null;
-  hasBilingual?: boolean;
   variant?: "card" | "plain";
 };
 
@@ -35,7 +34,6 @@ export function BookCard({
   author,
   genres = [],
   cover = null,
-  hasBilingual = false,
   variant = "card",
 }: BookCardProps) {
   const plain = variant === "plain";
@@ -56,11 +54,6 @@ export function BookCard({
             loading="eager"
             sizes="(min-width:1280px) 20vw, (min-width:1024px) 25vw, (min-width:640px) 33vw, 50vw"
           />
-        )}
-        {hasBilingual && (
-          <div className={bookCard.badges}>
-            <span className={bookCard.bilingual}>EN · VI</span>
-          </div>
         )}
         {!cover && (
           <>

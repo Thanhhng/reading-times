@@ -48,9 +48,8 @@ export async function BookGrid({ filters }: { filters: LibraryFilters }) {
 
   const shown = books.filter(
     (book) =>
-      (!filters.genres.length ||
-        book.genres?.some((genre) => filters.genres.includes(genre))) &&
-      (!filters.bilingual || book.hasBilingual),
+      !filters.genres.length ||
+      book.genres?.some((genre) => filters.genres.includes(genre)),
   );
 
   const page = filters.page ?? 1;

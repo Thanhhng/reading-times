@@ -8,13 +8,11 @@ export type ReaderPrefs = {
   size: number;
   font: "serif" | "sans" | "dyslexic";
   leading: number;
-  trans: "hidden" | "on-tap" | "parallel";
 };
 
 type Props = {
   prefs: ReaderPrefs;
   setPref: <K extends keyof ReaderPrefs>(key: K, value: ReaderPrefs[K]) => void;
-  showTranslation?: boolean;
   onClose: () => void;
 };
 
@@ -30,13 +28,7 @@ const LEADINGS: [number, string][] = [
   [2, "Loose"],
 ];
 
-const TRANSLATIONS: [ReaderPrefs["trans"], string][] = [
-  ["hidden", "Hidden"],
-  ["on-tap", "On tap"],
-  ["parallel", "Parallel"],
-];
-
-export function AaPanel({ prefs, setPref, showTranslation = true, onClose }: Props) {
+export function AaPanel({ prefs, setPref, onClose }: Props) {
   return (
     <div className={c.aa}>
       <div className={c.aaHead}>
@@ -100,24 +92,6 @@ export function AaPanel({ prefs, setPref, showTranslation = true, onClose }: Pro
           ))}
         </div>
       </div>
-
-      {showTranslation && (
-        <div className={c.aaRow}>
-          <span className={c.aaLabel}>Translation</span>
-          <div className={c.seg}>
-            {TRANSLATIONS.map(([value, label]) => (
-              <button
-                key={value}
-                type="button"
-                className={cn(c.segBtn, prefs.trans === value && c.segBtnActive)}
-                onClick={() => setPref("trans", value)}
-              >
-                {label}
-              </button>
-            ))}
-          </div>
-        </div>
-      )}
     </div>
   );
 }

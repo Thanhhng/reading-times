@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { ArrowRight, Play, TextCursor } from "lucide-react";
+import { ArrowRight, Play } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { buttonVariants } from "@/components/ui/button";
 import { BookCard } from "@/components/ui/BookCard";
@@ -83,10 +83,6 @@ export default async function HomePage() {
               Browse the library
             </Link>
           </div>
-          <p className={home.heroHint}>
-            <TextCursor aria-hidden="true" />
-            Select any sentence to see it in Vietnamese.
-          </p>
         </div>
         <ReelCard />
       </section>

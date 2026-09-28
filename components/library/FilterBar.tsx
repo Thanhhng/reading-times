@@ -6,7 +6,6 @@ export type LibraryFilters = {
   genres: string[];
   languages: string[];
   sort?: "popular" | "ascending" | "descending";
-  bilingual: boolean;
   search?: string;
   topic?: string;
   page?: number;
@@ -35,7 +34,6 @@ export function libraryHref(
   for (const genre of next.genres) qs.append("genre", genre);
   if (next.languages.length) qs.set("languages", next.languages.join(","));
   if (next.sort) qs.set("sort", next.sort);
-  if (next.bilingual) qs.set("bilingual", "1");
   if (next.search) qs.set("search", next.search);
   if (next.topic) qs.set("topic", next.topic);
   if (next.page && next.page > 1) qs.set("page", String(next.page));
@@ -92,14 +90,6 @@ export function FilterBar({
             {label}
           </Link>
         ))}
-      </div>
-      <div className={c.group}>
-        <Link
-          href={libraryHref(filters, { bilingual: !filters.bilingual })}
-          className={cn(c.tag, filters.bilingual ? c.tagActive : c.tagIdle)}
-        >
-          EN ↔ VI
-        </Link>
       </div>
       <div className={cn(c.group, c.spacer)}>
         <div className={c.seg}>
