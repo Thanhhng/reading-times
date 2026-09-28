@@ -74,7 +74,7 @@ export default async function HomePage() {
           <div className={home.heroCta}>
             <Link
               href={featured ? `/read/${featured.id}` : "/library"}
-              className={cn(buttonVariants({ size: "lg" }), home.heroPrimary)}
+              className={cn(buttonVariants({ size: "lg" }))}
             >
               <Play />
               Start today’s reel

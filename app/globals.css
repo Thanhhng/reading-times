@@ -259,35 +259,37 @@ body {
     color var(--dur-base) var(--ease-soft);
 }
 
-h1,
-h2,
-h3,
-h4 {
-  font-family: var(--font-display);
-  font-weight: var(--fw-semibold);
-  line-height: var(--lh-tight);
-  letter-spacing: var(--tracking-tight);
-  color: var(--text);
-  margin: 0;
-  font-variation-settings: var(--fraunces-soft);
-}
+@layer base {
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-family: var(--font-display);
+    font-weight: var(--fw-semibold);
+    line-height: var(--lh-tight);
+    letter-spacing: var(--tracking-tight);
+    color: var(--text);
+    margin: 0;
+    font-variation-settings: var(--fraunces-soft);
+  }
 
-p {
-  margin: 0;
-  text-wrap: pretty;
-}
+  p {
+    margin: 0;
+    text-wrap: pretty;
+  }
 
-a {
-  color: var(--accent-2);
-  text-decoration: none;
-  transition: color var(--dur-fast) var(--ease-soft);
-}
-a:hover {
-  color: var(--accent);
-}
+  a {
+    color: var(--accent-2);
+    text-decoration: none;
+    transition: color var(--dur-fast) var(--ease-soft);
+  }
+  a:hover {
+    color: var(--accent);
+  }
 
-button {
-  font-family: inherit;
+  button {
+    font-family: inherit;
+  }
 }
 
 ::selection {
