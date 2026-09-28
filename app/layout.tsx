@@ -7,7 +7,6 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import { TopNav } from "@/components/layout/TopNav";
 import { MobileTopBar } from "@/components/layout/MobileTopBar";
 import { MobileBottomNav } from "@/components/layout/MobileBottomNav";
-import { fetchBooks, readableBooks } from "@/app/_data/gutendex";
 
 const fraunces = Fraunces({
   subsets: ["latin", "vietnamese"],
@@ -36,13 +35,11 @@ export const metadata: Metadata = {
   description: "Turn wasted time into wonderful time.",
 };
 
-export default async function RootLayout({
+export default function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const featured = readableBooks(await fetchBooks({ sort: "popular" }))[0];
-  const readHref = featured ? `/read/${featured.id}` : "/library";
   return (
     <html
       lang="en"
@@ -69,7 +66,7 @@ export default async function RootLayout({
                 {children}
               </main>
             </div>
-            <MobileBottomNav readHref={readHref} />
+            <MobileBottomNav />
           </ThemeProvider>
         </TooltipProvider>
       </body>

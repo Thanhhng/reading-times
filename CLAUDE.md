@@ -47,12 +47,17 @@ product, data, and design all live here.
 
 ## Data layer (`app/_data/gutendex.ts`)
 
-Live endpoints (ISR `revalidate: 2700`, 12s timeout, errors → `null`):
+Live endpoints (ISR `revalidate: 2700`, 12s timeout). Base URL comes from `GUTENDEX_URL`
+(default `http://127.0.0.1:8000/books/`). `fetchBooks` turns any failure into `null` (list pages
+show their empty state + reload). `fetchBook` returns `null` only on a real 404 (→ `notFound()`);
+network errors / 5xx throw `GutendexUnavailableError`, caught by `error.tsx` in
+`app/library/[bookId]/` and `app/read/[bookId]/` (`ServiceError` with "Try again" →
+`unstable_retry()`).
 
 - List: `http://127.0.0.1:8000/books/?languages=&sort=popular|ascending|descending&search=&topic=&page=`
   (trailing slash matters — the API 301s without it). Typed as `GutendexResponse`
   (`count`, `next`, `previous`, `results: GutendexBook[]`).
-- Single book: `http://127.0.0.1:8000/books/{id}` → `fetchBook(id)`.
+- Single book: `http://127.0.0.1:8000/books/{id}/` → `fetchBook(id)` (trailing slash avoids a 301).
 - Covers and text files are served from `https://www.gutenberg.org` (covers under `/cache/epub/**`,
   already allowed in `next.config.ts` `images.remotePatterns`).
 
@@ -110,9 +115,9 @@ lines; `toChapters` groups paragraphs under heading-like lines (CHAPTER/PART/BOO
 - **Desktop nav** — sticky top navbar (brand · Home/Library/Search · Settings gear · light/dark
   toggle). Replaced the old left sidebar; hidden on `/read/*` (the reader has its own top bar).
 - **Mobile nav** — bottom tab bar (≤`md`) with four equal flat tabs: Home · Library · Read ·
-  Profile. No raised primary pill; active tab = accent-soft pill + accent text. "Read" jumps into
-  the most popular book in normal reading (href computed in `app/layout.tsx` from real data,
-  `/library` fallback).
+  Profile. No raised primary pill; active tab = accent-soft pill + accent text. "Read" links to
+  `/library` for now (the root layout does no data fetching; resume-reading comes with
+  milestone 1).
 
 ## Design system (non-negotiable)
 

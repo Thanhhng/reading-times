@@ -28,3 +28,10 @@ export const bookCard = {
 export const chip = {
   base: "inline-flex items-center rounded-[var(--radius-pill)] border border-border bg-surface-2 px-[8px] py-[2px] text-[length:var(--text-2xs)] font-medium text-muted-foreground",
 };
+
+export const serviceError = {
+  root: "mx-auto flex w-full max-w-[var(--content-max)] flex-col items-start gap-[var(--space-4)] px-[var(--space-4)] py-[var(--space-8)] @2xl/main:px-[var(--space-6)]",
+  title: "text-[length:var(--text-2xl)]",
+  text: "max-w-[52ch] font-read text-[length:var(--text-md)] leading-[1.6] text-muted-foreground",
+  actions: "flex flex-wrap items-center gap-[var(--space-3)]",
+};

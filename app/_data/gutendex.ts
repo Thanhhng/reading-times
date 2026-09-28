@@ -110,7 +110,7 @@ export function readableBooks(
     .filter((book) => book.textUrl !== null);
 }
 
-const GUTENDEX_URL = "http://127.0.0.1:8000/books/";
+const GUTENDEX_URL = process.env.GUTENDEX_URL ?? "http://127.0.0.1:8000/books/";
 const REVALIDATE_SECONDS = 2700;
 const FETCH_TIMEOUT_MS = 12000;
 
@@ -145,15 +145,24 @@ export async function fetchBooks(
   }
 }
 
+export class GutendexUnavailableError extends Error {
+  constructor(cause?: unknown) {
+    super("The Gutendex API is unavailable", { cause });
+    this.name = "GutendexUnavailableError";
+  }
+}
+
 export async function fetchBook(id: number): Promise<LibraryBook | null> {
+  let res: Response;
   try {
-    const res = await fetch(`${GUTENDEX_URL}${id}`, {
+    res = await fetch(`${GUTENDEX_URL}${id}/`, {
       next: { revalidate: REVALIDATE_SECONDS },
       signal: AbortSignal.timeout(FETCH_TIMEOUT_MS),
     });
-    if (!res.ok) return null;
-    return toLibraryBook((await res.json()) as GutendexBook);
-  } catch {
-    return null;
+  } catch (error) {
+    throw new GutendexUnavailableError(error);
   }
+  if (res.status === 404) return null;
+  if (!res.ok) throw new GutendexUnavailableError(`HTTP ${res.status}`);
+  return toLibraryBook((await res.json()) as GutendexBook);
 }

@@ -13,7 +13,7 @@ function activeTab(pathname: string): string {
   return "home";
 }
 
-export function MobileBottomNav({ readHref }: { readHref?: string }) {
+export function MobileBottomNav() {
   const pathname = usePathname();
   const active = activeTab(pathname);
 
@@ -22,11 +22,10 @@ export function MobileBottomNav({ readHref }: { readHref?: string }) {
       {bottomNavTabs.map((tab) => {
         const Icon = tab.icon;
         const isActive = tab.id === active;
-        const href = tab.id === "read" ? (readHref ?? tab.href) : tab.href;
         return (
           <Link
             key={tab.id}
-            href={href}
+            href={tab.href}
             aria-current={isActive ? "page" : undefined}
             className={cn(
               bottomNav.item,
